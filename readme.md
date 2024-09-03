@@ -38,6 +38,6 @@ tweak some of the preferences within the browser itself.
 2. Within the **Preferences** dialog, click on the tab called **Advanced**.
 3. Once the contents of the **Advanced** tab has appeared, look to the bottom and enable the **Show Develop menu in menu bar option**
 4. With that option enabled, close the **Preferences** dialog.
-5. Now, choose the newly enabled **Develop** option from the **Application** menu and select **Show JavaScript Console** to display the developer tools. You can also right-click and choose **Inspect Element** as well.
+5. Now, choose the newly enabled **Develop** option from the **Application** menu and select **Show JavaScript Console** to display the developer tools. You can also right-click and choose **Inspect Element** as well..
 
 

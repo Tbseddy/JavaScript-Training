@@ -57,5 +57,12 @@ Without JavaScript, the web would be a fairly bland and non-interactive experien
 
  This is likely one of the most common uses for JavaScript on the web: you can provide basic feedback letting the user know they've done something in error—in this case, invalid login credentials.
 
+ ## Chapter two
+
+ Some of the benefits of using the web browser as a JavaScript runtime are as follows:
+ * Web browsers are one of the most distributed software platforms in the world.
+ * Browsers include a set of built-in developer tools for debugging and monitoring JavaScript.
+ * Browsers are the absolute primary runtime for JavaScript and all others follow it.
+
 
 

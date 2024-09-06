@@ -55,7 +55,7 @@ Without JavaScript, the web would be a fairly bland and non-interactive experien
 
  This is likely one of the most common uses for JavaScript on the web: you can provide basic feedback letting the user know they've done something in error—in this case, invalid login credentials.
 
- ## Chapter two
+ ## Chapter Two
 
  Some of the benefits of using the web browser as a JavaScript runtime are as follows:
  * Web browsers are one of the most distributed software platforms in the world.
@@ -98,4 +98,47 @@ The final developer tools view that we'll look at before moving on is the Networ
 If we need to address a specific HTML element to manipulate, the best way to do so is with the getElementById() JavaScript method. Of course, the element in question must contain an ID attribute for this to function as expected. Check the exercise modify.html
 
 Once we have a reference to any element in JavaScript through the use of getElementById(), we can then get a reference to its child elements through the children.length child attribute and finally get a count of how many child elements exist by invoking the length property.
+
+## Chapter Three
+### Data Types
+All the data in a program has a data type. The data types that you usually learn to use first in JavaScript are number, string, boolean, object, array, and function. The number, string, and Boolean data types represent a single value. Objects represent more complex data. Functions are for writing programs.
+
+Some common JavaScript data types with their uses and descriptions are as follows: 
+* **Number:** Any positive or negative value whole numbers, usually called integers and floating-point numbers, that can be used in mathematical operations. It is used in product prices, checkout totals, the number of likes on a post, the geometry value of Pi, and can be used as a random number.
+* **String:** Any set of valid characters that cannot be, or are not intended to be, used in computational operations. They are used to comment on a discussion post which can be a company name, a street address, name of a place, an account number, a telephone number, or a postal number.
+* **Boolean:** Any value representing true and false. It is used to check whether a form can be submitted, whether a password meets its required characters, whether an order balance qualifies for free shipping, and whether a button can be clicked.
+* **Object:** An unordered collection of values, called properties, and code, called methods, that are intended to work together. It is used for real-world objects such as an order, stopwatch, clock, date, or microwave. They can be used for software objects such as a web page document, an HTML element on a web page, a CSS style rule, or an HTTP request.
+* **Function:** A specialized object data type that represents a block of code. The code can use optional input data and optionally return data. They can be used for the conversion of data such as temperature, finding a value in a list, updating the style of an HTML element, sending data to a web server, revealing a message on the screen, or checking for valid data entry formats such as an email address.
+
+Data is represented in programs using expressions. Expressions can be resolved to a value representing a specific data type.
+
+Expressions can be broken down into smaller parts, as follows:
+* Literal values
+* Operators
+* Variables
+* Functions that return data
+* Object properties
+* Object methods that return data
+
+#### Literal Values
+Literal values are written into the programming code. Literal values are static. This means that they have the same value every time the line of code is executed, and they cannot be changed.
+
+Here is a list of some of their types and their rules and an example of each valid and invalid case:
+* **Number:** Numbers can appear in expressions. They cannot include formatting punctuation, such as currency symbols, comma separators, and spaces. Negative numbers are preceded with the minus symbol. Some valid examples include **1000000, 101, 9.876,** and **-0.1234.** Invalid examples include **1,000,000, $1000000,** and **1 000 000.**
+* **String:** String data is encased in delimiters. The delimiters are either single or double quotes. Single quotes can appear within a double-quote delimited string, and double quotes can appear within a single-quote delimited string. Also, the escape character, \, is a delimiter that needs to appear as part of a string; for example, "ABC Company". Valid examples include **'ABC Company', "Earth's Moon", "She yelled \"duck\"!", 'She yelled "duck"!'**, and so on. Invalid examples include **ABC Company,** and **"She yelled "duck"!".**
+* **Boolean:** There are two keywords: true and false. They are lowercase. **true** and **false** are valid examples, whereas invalid examples include **True, TRUE, FALSE,** and **False.**
+
+Operators are used to performing arithmetic, combine text, make logical comparisons, and assign values to variables and properties. 
+
+The operators we look at can be grouped as follows:
+* Arithmetic
+* String
+* Grouping (bracket)
+* Comparison/ Relational
+* Logical
+* typeof
+
+
+
+
 

@@ -138,6 +138,8 @@ The operators we look at can be grouped as follows:
 * Logical
 * typeof
 
+> Note
+ It's good practice to surround operators with a space. Exceptions are to not use spaces before or after the grouping operator ( ) and before the logical not ! operator.
 
 
 

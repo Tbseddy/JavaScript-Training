@@ -163,9 +163,9 @@ When string is in expression JavaScript attempts to convert all other elements t
 > \\Output
 > false 
 6. If we want data type conversion to not take place before the comparison is made, we need to use the === operator, as shown here:
-> 100 === "100"
->\\Output.  No data type conversion
-> = false
+1. 100 === "100"
+2. \\Output.  No data type conversion
+3. = false
 
  ### Using Variables and Constants in Expressions
  Variables and constants are symbolic names that are assigned to values. The value of a variable can be changed after it is assigned. The value that's assigned to a constant cannot be changed. Variables and constants involve the following items:
@@ -191,10 +191,47 @@ Have a look at the following examples of declaring a variable without assigning 
 Variables that are not assigned a value still have a data type. That data type is named **undefined.** The **typeof** operator detects undefined data types.
 
 Here are some examples of declaring a variable and assigning a value:
-> var firstName = "Albert"
-> var totalLikes = 50
-> var errorMessage = "Something terrible happened"
-> var isSold = false 
+* var firstName = "Albert"
+* var totalLikes = 50 
+* var errorMessage = "Something terrible happened"
+* var isSold = false 
+
+### Exercise 3.02: Working with Variables Using the Web Browser Console
+1. Declare a variable named firstName:
+* var firstname
+>  \\Value is expressed as undefined
+* the result = undefined
+
+2. Write the data type of the variable:
+* typeof firstName
+> check the output below
+*  'undefined'
+3. Assign the string value Albert to the firstName variable:
+* firstName = "Albert"
+* result will be **'Albert'**
+4. To find out what data type our input is, use the **typeof** keyword, as shown here:
+* typeof firstname
+* result will be **'string'**
+5. Declare a variable and assign it to a number expression:
+*  var totalLikes = 50
+>  Console may express value when declared but before assigned
+* the result will be **undefined**
+6. Write the value of totalLikes:
+* totalLikes
+* the result will be **50**
+7. To ascertain the data type of totalLikes 
+* typeof totalLikes
+* the result will be **'number'**
+8. Here is the code for changing the value held by **totalLikes**:
+* totalLikes = totalLikes + 1
+* the result will be **51**
+9. Declare a variable and assign it to a Boolean expression:
+* var isSold = false
+> Console may express undefined data type when declared but before assigned.
+* the result will be **undefined**
+10. check the data type:
+* typeof isSold
+* The result will be **'boolean'**
 
 
 

@@ -233,6 +233,39 @@ Here are some examples of declaring a variable and assigning a value:
 * typeof isSold
 * The result will be **'boolean'**
 
+#### Functions That Return Values
+When we use a function, it is also called invoking the function. To use a function in an expression, you need to include the function name, followed by parentheses. If the function requires input, it is placed inside the parentheses as valid expressions. These are called arguments. If more than one argument is needed, they are  separated with commas.
+
+Have a look at this example on expressing functions that do not require an argument:
+* getTotal() 
+* isLoggedIn()
+
+This example shows us expressing a function that has one argument expressed as a number literal:
+* getCelsiusFromFahrenheit(32)
+
+This example shows us expressing a function that has multiple arguments using literal values:
+ * getSearchResults("Pet Names", 25)
+  
+This example shows us expressing a function that has multiple arguments using variables:
+* var amount = 100000
+* var decimals = 2
+* var decimalSeparator = "."
+* var thousandsSeparator = ","
+* formatCurrency(amount, decimals, decimalSeparator, thousandsSeparator)
+> When you see a function in an expression, think of it as representing a value.
+
+### Exercise 3.03: Using Functions in Expressions
+In this exercise, we will use a predefined function and then use it in expressions. This exercise will show how you can invoke, check, and return the data type, and use functions in expressions. For the purpose of this exercise, we will use a function defined as **getDiceRoll**. Let's get started:
+1. Open the **use-functions.html** document in your web browser.
+2. Open the web developer, console window, using your web browser.
+> The web page has a function named getDiceRoll. It returns the value of one rolled dice. It has one argument. The argument allows you to supply the number of dice to roll. Type the items on the lines beginning with the > symbol. The console window will show a response on the lines beginning with the <· symbol.
+3. Express the data type. Note that a function name without parentheses is used:
+* typeof getDiceRoll
+<!-- Expressed as a function type. It also assures us that there is a function. -->
+* the result will be **'function'**
+
+
+
 
 
 

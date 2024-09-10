@@ -194,7 +194,7 @@ Here are some examples of declaring a variable and assigning a value:
 > var firstName = "Albert"
 > var totalLikes = 50
 > var errorMessage = "Something terrible happened"
-> var isSold = false
+> var isSold = false 
 
 
 

@@ -141,6 +141,29 @@ The operators we look at can be grouped as follows:
 > Note
  It's good practice to surround operators with a space. Exceptions are to not use spaces before or after the grouping operator ( ) and before the logical not ! operator.
 
+ #### Exercise 3.01: Implementing Expressions and Operators
+ 1. Open the web developer console window using your web browser.
+Type the items on the lines beginning with the **>** symbol. The console window will show a response on the lines beginning with the **<** symbol.
+ 2. Write the following code to add two literal whole numbers:
+ > 200 + 200
+ \\output
+  400
+3. 
+ > 100 - 10 + " Main Street"
+   \\Output. 
+   "90 Main Street"
+
+When string is in expression JavaScript attempts to convert all other elements to a string.
+4.  We can use the == operator to compare two strings with the same case:
+> "Albert Einstein" == "Albert Einstein"
+  \\Output
+  true 
+5. Comparing two strings with a different case:
+> "Albert Einstein" == "ALBERT EINSTEIN"
+> \\Output
+> false
+
+
 
 
 

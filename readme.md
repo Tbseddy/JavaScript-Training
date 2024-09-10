@@ -261,7 +261,7 @@ In this exercise, we will use a predefined function and then use it in expressio
 > The web page has a function named getDiceRoll. It returns the value of one rolled dice. It has one argument. The argument allows you to supply the number of dice to roll. Type the items on the lines beginning with the > symbol. The console window will show a response on the lines beginning with the <· symbol.
 3. Express the data type. Note that a function name without parentheses is used:
 * typeof getDiceRoll
-<!-- Expressed as a function type. It also assures us that there is a function. -->
+> Note. Expressed as a function type. It also assures us that there is a function.
 * the result will be **'function'**
 
 

@@ -145,27 +145,27 @@ The operators we look at can be grouped as follows:
  1. Open the web developer console window using your web browser.
 Type the items on the lines beginning with the **>** symbol. The console window will show a response on the lines beginning with the **<** symbol.
  2. Write the following code to add two literal whole numbers:
-  200 + 200
- \\output
-  400
+  > 200 + 200
+ > \\output
+ >  400
 3. 
-  100 - 10 + " Main Street"
-   \\Output. 
-   "90 Main Street"
+ > 100 - 10 + " Main Street"
+ > \\Output. 
+>  "90 Main Street"
 
 When string is in expression JavaScript attempts to convert all other elements to a string.
 4.  We can use the == operator to compare two strings with the same case:
- "Albert Einstein" == "Albert Einstein"
-\\Output
-true 
+>  "Albert Einstein" == "Albert Einstein"
+> \\Output
+> true 
 5. Comparing two strings with a different case:
- "Albert Einstein" == "ALBERT EINSTEIN"
-\\Output
-false 
+ > "Albert Einstein" == "ALBERT EINSTEIN"
+> \\Output
+> false 
 6. If we want data type conversion to not take place before the comparison is made, we need to use the === operator, as shown here:
-100 === "100"
-\\Output.  No data type conversion
- = false
+> 100 === "100"
+>\\Output.  No data type conversion
+> = false
 
  ### Using Variables and Constants in Expressions
  Variables and constants are symbolic names that are assigned to values. The value of a variable can be changed after it is assigned. The value that's assigned to a constant cannot be changed. Variables and constants involve the following items:
@@ -187,6 +187,14 @@ Have a look at the following examples of declaring a variable without assigning 
 > var errorMessage
 >
 > var isSold
+
+Variables that are not assigned a value still have a data type. That data type is named **undefined.** The **typeof** operator detects undefined data types.
+
+Here are some examples of declaring a variable and assigning a value:
+> var firstName = "Albert"
+> var totalLikes = 50
+> var errorMessage = "Something terrible happened"
+> var isSold = false
 
 
 

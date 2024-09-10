@@ -156,12 +156,12 @@ Type the items on the lines beginning with the **>** symbol. The console window 
 When string is in expression JavaScript attempts to convert all other elements to a string.
 4.  We can use the == operator to compare two strings with the same case:
 > "Albert Einstein" == "Albert Einstein"
-  \\Output
-  true 
+\\Output
+true 
 5. Comparing two strings with a different case:
 > "Albert Einstein" == "ALBERT EINSTEIN"
-> \\Output
-> false
+\\Output
+false 
 
 
 

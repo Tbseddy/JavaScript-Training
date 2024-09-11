@@ -317,13 +317,11 @@ In this exercise, we will experiment with the properties and methods of ready-ma
 7. Display the **pageHeadEleHTMLElement** object:
 * pageHeadEle
 * The result will be:
-...<div id="page-heading" class="heading-section">
-  <h1 class="center-text">JavaScript Data and Expression Practice</h1>
-   </div>
+**<div id="page-heading" class="heading-section"><h1 class="center-text">JavaScript Data and Expression Practice</h1></div>**
 
 8. Write the **pageHeadEle object innerHTML** property:
 * pageHeadEle.innerHTML
-* The output is: '\n\t\t\t<h1 class="center-text">Javascript Data and Expression Exercises</h1>\n\t\t'
+* The output is: **<h1 class="center-text">Javascript Data and Expression Exercises</h1>**
 9. Now, let's look at the JavaScript built-in **Math** object. Write the Math object PI property:
 * Math.PI
 * The output will be: **3.141592653589793**
@@ -352,6 +350,9 @@ The **Math.floor()** method returns the previous largest integer value that is l
 13. This is the expression we use to get a random dice value. The floor method argument is an expression, that is, **Math.random() * 6**. Its result is added to **1**:
 * Math.floor(Math.random() * 6) + 1
 * the out will be between 1 to 6. after multiple trials
+
+### Self Made Objects
+
 
 
 

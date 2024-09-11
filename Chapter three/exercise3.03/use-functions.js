@@ -9,4 +9,4 @@ function getDiceRoll(rolls){
 		rollValue += Math.floor(Math.random() * 6) + 1;
 	}
 	return rollValue;
-}
+} 

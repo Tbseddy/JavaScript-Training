@@ -263,6 +263,99 @@ In this exercise, we will use a predefined function and then use it in expressio
 * typeof getDiceRoll
 > Note. Expressed as a function type. It also assures us that there is a function.
 * the result will be **'function'**
+4. Express the return value data type. Note that a function name with parentheses is used:
+* typeof getDiceRoll()
+* The result will be **'number'**
+> Note: Function return value is a number. We do not see the actual value.
+5. Invoke the function using the following code:
+* getDiceRoll()
+* Your value will be 1 to 6. Repeat a few times.
+6. Invoke the function in a math expression:
+* 100 * getDiceRoll()
+* Your value will be 100 to 600 Repeat a few times.
+7. Invoke the function in a comparison expression:
+* getDiceRoll() == 4
+* You may need to repeat a few times to get a true result.
+8. Invoke and supply the argument for the number of dice to roll as 2:
+* getDiceRoll(2) <!-- That is we are rolling two dice -->
+* You will receive values from 2 to 12.
+
+### The Object Data Type
+There are JavaScript objects that have been ready-made for us to use and you, as a programmer, will create objects. In either case, JavaScript objects are composed of **properties** and **methods**:
+**Property**: A value that has an assigned named. Together, they are often called a name/value pair.  Values can be any type, that is, data, a number, a string, a Boolean, or an object. Property values can be changed dynamically.
+**Method**: A function that performs an action.
+
+#### Ready-Made Objects
+JavaScript has ready-made objects that we can use to help us begin to learn how to program. There are many useful objects built into JavaScript. Web browsers provide a collection of objects called the Document Object Model (DOM). 
+
+Some examples of ready-made objects are as follows:
+* **window** is an object in DOM. It has access to the web browser's open window. Often considered a top-level DOM object containing other web browser-created objects as its properties, it has methods for setting timer events and printing.
+* **console** is an object in DOM. It provides the ability to output to the web browser console window. It is also a property of the window object.
+* **document** is an object in DOM. It has access to a web page's HTML elements, styles, and content. It is also a property of the window object.
+* **location** is an object in DOM. It has information about the current URL. It is a property of the window object.
+* **Math** is a built-in object. It consists of math constants such as Pi, and functions such as rounding.
+* **Date** is a built-in object. It provides calendar date and time operations.
+
+### Exercise 3.04: Working with Ready-Made Objects
+In this exercise, we will experiment with the properties and methods of ready-made objects that are available to JavaScript in the web browser. We will use the random, round, ceil, and floor methods to invoke a math object from a pre-defined object.
+1. Open the objects-ready-made.html document in your web browser.
+2. Open the web developer console window using your web browser.
+3. Display the document object title property:
+* document.title
+* The result will be: **'Javascript Data and Expression Exercise | Packt Publishing'**
+4. Now, display the document object **doctype** property:
+* document.doctype
+* The result will be: **<!doctype html>**
+5. Display the document object lastModified property:
+* document.lastModified
+* The result will be: **'09/11/2024 13:49:25'**
+> Your output may have a different time and date value.
+6. Declare a variable and assign it to the **HTMLElement** object variable using the document object **getElementById** method:
+* var pageHeadEle = document.getElementById('page-heading')
+* The result will be: undefined
+> Console may express undefined data type when declared but before assigned. 
+7. Display the **pageHeadEleHTMLElement** object:
+* pageHeadEle
+* The result will be:
+...<div id="page-heading" class="heading-section">
+  <h1 class="center-text">JavaScript Data and Expression Practice</h1>
+   </div>
+
+8. Write the **pageHeadEle object innerHTML** property:
+* pageHeadEle.innerHTML
+* The output is: '\n\t\t\t<h1 class="center-text">Javascript Data and Expression Exercises</h1>\n\t\t'
+9. Now, let's look at the JavaScript built-in **Math** object. Write the Math object PI property:
+* Math.PI
+* The output will be: **3.141592653589793**
+10. Invoke the **random** method for the Math object: 
+* Math.random()
+* the output is: **0.08285492755857815**
+* Math.random()
+* the output is: **0.14433372727085447**
+> The **Math.random()** method returns a random number from the range **0** and **1**, both inclusive. It returns a different value with every call.
+11. Use the Math object's round method:
+* Math.round(10.5)
+* output is: **11**
+* Math.round(10.4)
+* output is: **10**
+> The **Math.round()** method returns the number after rounding it off to its nearest integer. 
+12. Use the Math object's ceil method:
+* Math.ceil(10.5)
+* output is: **11**
+* Math.ceil(10.4)
+* output is: **11**
+>The **Match.ceil()** method returns the next smallest integer value that is greater than, or equal to, the given argument.
+
+The **Math.floor()** method returns the previous largest integer value that is less than, or equal to, the given argument.
+*  Math.floor(10.8)
+* output is: **10**
+13. This is the expression we use to get a random dice value. The floor method argument is an expression, that is, **Math.random() * 6**. Its result is added to **1**:
+* Math.floor(Math.random() * 6) + 1
+* the out will be between 1 to 6. after multiple trials
+
+
+
+
 
 
 

@@ -317,7 +317,7 @@ In this exercise, we will experiment with the properties and methods of ready-ma
 7. Display the **pageHeadEleHTMLElement** object:
 * pageHeadEle
 * The result will be:
-**<div id="page-heading" class="heading-section"><h1 class="center-text">JavaScript Data and Expression Practice</h1></div>**
+ <div id="page-heading" class="heading-section"><h1 class="center-text">JavaScript Data and Expression Practice</h1></div>
 
 8. Write the **pageHeadEle object innerHTML** property:
 * pageHeadEle.innerHTML
@@ -352,6 +352,26 @@ The **Math.floor()** method returns the previous largest integer value that is l
 * the out will be between 1 to 6. after multiple trials
 
 ### Self Made Objects
+You often have to create objects when developing real-world applications. They help you organize a set of data and functions that work together. Think about what properties and methods you may use for a stopwatch object.
+
+You can see that we named the properties and methods as follows:
+* **elapsedTime** is a property with a data type number. It displays the seconds that have elapsed since timing started.
+* **resultsHistory** is a property data type object. It displays a list of previous timings.
+* **isTiming** is a property data type Boolean. It displays the state of its timing.
+* **isPaused** is a property data type Boolean. It displays the state if paused. 
+* **start** is a method data type function. It starts timing and sets **elapsedTime** to **0**.
+* **pause** is a method data type function. It pauses the timing.
+* **resume** is a method data type function. It resumes the timing.
+* **stop** is a method data type function. It stops timing and adds the result to 
+**resultsHistory**
+
+###Object Dot Notation
+To reference object properties and methods, you use dot notation. This is the object name, followed by a period, and then the name of the property or method. Let's use the **stopWatch** object as an example:
+* stopWatch.elapsedTime
+* stopWatch.start()
+* stopWatch.start()
+* stopWatch.stop()
+> Methods require parentheses after the name. If the method requires data input, the data is placed inside the parentheses.
 
 
 

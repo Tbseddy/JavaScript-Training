@@ -373,6 +373,19 @@ To reference object properties and methods, you use dot notation. This is the ob
 * stopWatch.stop()
 > Methods require parentheses after the name. If the method requires data input, the data is placed inside the parentheses.
 
+### The Array Object
+Arrays are objects that represent a list of values. Each item in the list is called an element. An array literal is a comma-separated list of expressions enclosed in square brackets, like so:
+>  ["Saab", "Ford", "BMW", "GM"]
+Elements in arrays can be different data types. Often, all the elements are the same data type:
+> ["Milk", false, 123, document, "Gold", -.9876] **check page 125 for more details**
+**Check page 125 for array objects with useful properties and methods**
+
+### Using the Console Object
+The **console** object has a method called **log** that we can use to test expressions in a JavaScript program. It takes an unlimited number of expressions separated by commas. All the expressions we enter into the console window would work with the **console.log** method. It evaluates the expressions and returns their results in the console. Multiple expressions are separated by a space.
+
+The syntax of **console.log**
+console.log(expression 1[, expression 2][, expression n])
+
 
 
 

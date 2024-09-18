@@ -378,13 +378,40 @@ Arrays are objects that represent a list of values. Each item in the list is cal
 >  ["Saab", "Ford", "BMW", "GM"]
 Elements in arrays can be different data types. Often, all the elements are the same data type:
 > ["Milk", false, 123, document, "Gold", -.9876] **check page 125 for more details**
+
 **Check page 125 for array objects with useful properties and methods**
 
 ### Using the Console Object
 The **console** object has a method called **log** that we can use to test expressions in a JavaScript program. It takes an unlimited number of expressions separated by commas. All the expressions we enter into the console window would work with the **console.log** method. It evaluates the expressions and returns their results in the console. Multiple expressions are separated by a space.
 
-The syntax of **console.log**
-console.log(expression 1[, expression 2][, expression n])
+The syntax of **console.log**: console.log(expression 1[, expression 2][, expression n])
+
+Here are some examples of the console.log method:
+* console.log("Odd number count started!");
+* console.log("Iteration:", i);
+*  console.log("Number:", number);
+*  console.log(oddsCount + " odd numbers found!");
+*   console.log(document);
+**Go to page 126 for Syntax**
+
+Commenting in JavaScript page 128
+
+### Conditional and Loop Flow
+Statements in JavaScript are processed sequentially in the order they're loaded. That order can be changed with conditional and loop code statements. 
+
+The different parts of a control statement are as follows:
+
+* Code blocks: These are statements that are placed between an open and close curly bracket. 
+* Conditional flow statements, such as **if...else, switch, try catch finally**
+* Loop statements, such as **for, do...while, while, for...in, and for...of**
+* Other control statements, such as **labeled, break,** and **continue**
+
+**Conditional Statements** This use logic expressions to choose from among a set of statements to process.
+
+**if** Statement: Code in an **if** statement is processed if the expression evaluates to true and is skipped if the expression evaluates to false. **Page 130 for syntax of the ***if*** statement**
+
+### Exercise 3.05: Writing an if statement
+
 
 
 

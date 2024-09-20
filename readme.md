@@ -411,6 +411,22 @@ The different parts of a control statement are as follows:
 **if** Statement: Code in an **if** statement is processed if the expression evaluates to true and is skipped if the expression evaluates to false. **Page 130 for syntax of the ***if*** statement**
 
 ### Exercise 3.05: Writing an if statement
+ In this exercise, you will use the if statement to test for an even number between 1 and 6 and test the results in your web browser console window. Let's get started:
+ 1. Open the if-statement.html document in your web browser.
+ 2. Open the web developer console window using your web browser
+ 3. Open the if-statement.js document in your code editor, replace all of its content with the following code, and then save it:
+* var diceValue = Math.floor(Math.random() * 6) + 1;
+* console.log("Dice value:", diceValue);
+* if(diceValue % 2 != 0){
+* console.log("Is an odd number.");
+* }
+4. The **Math.random()** function randomly creates a whole number from 1 to 6 and displays it in the console. Here, the **if** statement states that if the remainder of the number, divided by two, is not zero, that is, **diceValue % 2 != 0**, then the **if** expression is true and the **console.log()** message is displayed in the console.
+>Example of output if the number is odd.
+* Dice value: 3
+*  Is an odd number.
+
+> Example of output if the number is even.
+* Dice value: 4
 
 
 

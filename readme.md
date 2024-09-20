@@ -421,6 +421,7 @@ The different parts of a control statement are as follows:
 * console.log("Is an odd number.");
 * }
 4. The **Math.random()** function randomly creates a whole number from 1 to 6 and displays it in the console. Here, the **if** statement states that if the remainder of the number, divided by two, is not zero, that is, **diceValue % 2 != 0**, then the **if** expression is true and the **console.log()** message is displayed in the console.
+5. Reload the **if-statement.html** web page in your web browser with the console window open. Repeat until you see a version of the two examples:
 >Example of output if the number is odd.
 * Dice value: 3
 *  Is an odd number.
@@ -428,7 +429,40 @@ The different parts of a control statement are as follows:
 > Example of output if the number is even.
 * Dice value: 4
 
+6. Edit the **if-statement.js** document using bolded lines and then save it:
+> var diceValue = Math.floor(Math.random() * 10) + 1;
+>
+> console.log("Dice value:", diceValue);
+>
+> console.log("Is an odd number.");
 
+***Because there is only one line of code in the if statement, the block brackets are not required.***
+7. Reload the if-statement.html web page in your web browser with the console window open. You should expect the same results.
+8. Edit the **if-statement.js** document and add the highlighted line to console.log() and save it:
+> var diceValue = Math.floor(Math.random() * 6) + 1;
+>
+> console.log("Dice value:", diceValue);
+>
+>  if(diceValue % 2 != 0)
+>
+> console.log("Is an odd number.");
+>
+> console.log('"You have to be odd to be number one", Dr. Seuss');
+
+Reload the if-statement.html web page in your web browser with the console window open:
+> Example of output if the number is odd.
+>
+> Dice value: 3
+>
+>  Is an odd number.
+>
+>  "You have to be odd to be number one", Dr. Seuss
+
+> Example of output if the number is even.
+>
+> Dice value: 2
+>
+> "You have to be odd to be number one", Dr. Seuss
 
 
 

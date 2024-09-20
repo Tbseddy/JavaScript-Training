@@ -437,8 +437,10 @@ The different parts of a control statement are as follows:
 > console.log("Is an odd number.");
 
 ***Because there is only one line of code in the if statement, the block brackets are not required.***
-7. Reload the if-statement.html web page in your web browser with the console window open. You should expect the same results.
-8. Edit the **if-statement.js** document and add the highlighted line to console.log() and save it:
+
+ Reload the if-statement.html web page in your web browser with the console window open. You should expect the same results.
+
+7. Edit the **if-statement.js** document and add the highlighted line to console.log() and save it:
 > var diceValue = Math.floor(Math.random() * 6) + 1;
 >
 > console.log("Dice value:", diceValue);
@@ -464,6 +466,52 @@ Reload the if-statement.html web page in your web browser with the console windo
 >
 > "You have to be odd to be number one", Dr. Seuss
 
+The Dr. Seuss quote is shown regardless of whether the number is even or odd.
+
+####  if Statement and else Statement
+You can combine an **if** statement with an **else** statement. If the expression evaluates to **true**, the code in the **if** statement is processed and the code in the **else** statement is skipped. If the expression is **false**, the code in the **if** statement is skipped and the code in the **else** statement is processed.
+
+### Exercise 3.06: Writing an if...else Statement
+In this exercise, a random number is being used for a coin toss. A random value equal to .5 or greater is heads and less than .5 is tails. We will assume that multiple statement lines are required for each case. Let's get started:
+
+1. Open the if-else-statements.html document in your web browser.
+2. Open the web developer console window using your web browser.
+3. Open the **if-else-statements.js** document in your code editor, replace all of its content with the following code, and then save it:
+>  var tossValue = Math.random();
+>
+> console.log("Random toss value:", tossValue);
+>
+> if(tossValue>= .5){
+>
+> console.log("Heads");
+>
+> }
+
+The **tossValue** variable is a value from 0 to 1, not including 1. For now, just an **else** statement is used for a head toss.
+
+4. Reload the if-else-statements.html web page in your web browser with the console window open. Repeat until you see a version of the two examples:
+>  //Example of output if the number is .5 or greater.
+>
+>  Random toss value: 0.8210720135035767
+>
+> Heads
+
+>  //Example of output if the number is less than .5.
+>
+> Random toss value: 0.4565522878478414
+>
+> //random()gives out a different value each time. The numbers that you obtain are likely to be different to the ones presented here.
+
+5. Edit the if-else-statements.js document, add the following bolded code, and then save it:
+> if(tossValue>= .5){
+>
+> console.log("Heads");
+>
+> }else{
+>
+> console.log("Tails");
+>
+> }
 
 
 

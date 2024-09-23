@@ -614,6 +614,75 @@ We will start by matching the target or exceeding it using the **if** statement 
 5. Edit the **if-else-if-else-statements.js** document, add the following bolded code, 
 and then remove the strikethrough code and save it:
 
+> var target = Math.floor(Math.random() * 21) + 1;
+>
+>  var player = Math.floor(Math.random() * 21) + 1;
+>
+> console.log("Target score:", target);
+>
+> console.log("Player score:", player);
+>
+> if (player == target){
+>
+> console.log("Player wins: ties target " + target);
+>
+> }else if (player > target){
+>
+> console.log("Player wins: beats target by " + (player - target));
+>
+> }else{
+>
+> console.log("Player loses: misses target by " + (target - player));
+> }
+
+6. Reload the **if-else-if-else-statements.html** web page in your web browser with the console window open. Repeat this until you see a version for each of these three examples.
+
+ An example of a player's score exceeding the target is as follows:
+ >  Target score: 7
+ > 
+ > Player score: 14
+ >
+ > Player wins: beats target by 7
+
+An example of a player matching the target. In this case, the message is not supporting the logic:
+> Target score: 3
+>
+> Player score: 3
+>
+> Player wins: ties target 3
+
+An example of the target exceeding the player's score is as follows:
+> Target score: 10
+>
+> Player score: 5
+>
+>  Player loses: misses target by 5
+
+7. Edit the if-else-if-else-statements.js document, update it using the following code, and then save it.
+
+A variable for the lucky and unlucky number are added and are output to the console so that we can observe them:
+> var target = Math.floor(Math.random() * 21) + 1;
+>
+> var player = Math.floor(Math.random() * 21) + 1;
+>
+> var lucky = Math.floor(Math.random() * 21) + 1;
+>
+> var unlucky = Math.floor(Math.random() * 21) + 1;
+>
+> console.log("Target score:", target);
+>
+> console.log("Player score:", player);
+>
+> console.log("Lucky score:", lucky);
+>
+> console.log("Unlucky score:", unlucky);
+>
+>  if (lucky != unlucky && player == lucky){
+>  console.log("Player wins: matches lucky score.");
+>  }else if (player == target){
+>  console.log("Player wins: ties target " + target);
+>   }
+
 
 
 

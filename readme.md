@@ -513,6 +513,106 @@ The **tossValue** variable is a value from 0 to 1, not including 1. For now, jus
 >
 > }
 
+***Consider how an if statement may handle toggling a like icon on the screen.***
+
+###  if Statements with Multiple else...if Statements
+You can have one or more **else...if statements** in addition to the **if** statement. The **if** statement and each **else...if** statement has its own expression. If the code in the 
+irst statement has an expression evaluated as **true**, it is processed and the code in all the other statements is skipped. If none of the expressions evaluate to **true**, all the code statements are skipped. The syntax is in ***page 136***
+
+###  if Statement, Multiple else...if statements, and the else Statement
+The syntax is:
+
+>  if(boolean expression){ 
+>
+> //Statement
+>
+> //Statement
+>
+> //Statement
+>
+> }else if(boolean expression){
+>
+> //Statement
+>
+> //Statement
+>
+> //Statement
+>
+> }else if(boolean expression){
+>
+> //Statement
+>
+> //Statement
+>
+>  }else{
+>
+> //Statement
+>
+> }
+
+###  Exercise 3.07: Writing an if Statement with Multiple if else Statements and the else Statement
+ In this exercise, we will build a simple game that generates four random game numbers from 1 to 21 inclusive. One is the player's score, one is the target score, one is a lucky score, and the last is an unlucky score.The player gets a wallet of 20 times the player's score. There are five possible outcomes, with each assigning different wins or losses to the player's wallet:
+ * The player's score matches the lucky score, and the lucky score and the unlucky score are different. The wallet is increased by the lucky value plus the player's score times **10**.
+ * The player's score equals the unlucky score, and the lucky score and the unlucky score are different. The wallet is reduced to zero.
+ * The player's score equals the target score. The wallet is increased by the difference between **21** and the target score times **10.**
+ * The player's score beats the target score. The wallet is increased by the difference between the player's score and the target score times **10.**
+ * The target score beats the player's score. The wallet is decreased by the difference between the target score and the player's score times **10.**
+
+The steps for completion are as follows:
+
+1. Open the **if-else-if-else-statements.html** document in your web browser.
+2. Open the web developer **console window** using your web browser.
+3. Open the **if-else-if-else-statements.js** document in your code editor, replace all of its content with the following code, and then save it:
+> var target = Math.floor(Math.random() * 21) + 1;
+>
+> var player = Math.floor(Math.random() * 21) + 1;
+>
+> console.log("Target score:", target);
+>
+> console.log("Player score:", player);
+>
+> if (player >= target){
+>
+> console.log("Player wins: beats target by " + (player - target));
+>
+> }else{
+>
+> console.log("Player loses: misses target by " + (target - player));
+>
+>  }
+
+We will start by matching the target or exceeding it using the **if** statement block, **if (player >= target).** The **else** statement block stating "Player loses: misses target by" covers being below the target.
+
+4. Reload the **if-else-if-else-statements.html** web page in your web browser with the console window open. Repeat until you see a version for each of these three examples.
+
+ An example of the player's score exceeding the target is as follows:
+ 
+ >  Target score: 5
+ > 
+ > Player score: 13
+ > 
+ > Player wins: beats target by 8
+
+ The following is an example of the player's score matching the target. In this case, the message is not supporting the logic:
+
+ > Target score: 14
+ >
+ > Player score: 14
+ >
+ >  Player wins: beats target by 0
+
+ An example of the target exceeding the player's score is as follows:
+
+ >  Target score: 19
+ >
+ > Player score: 1
+ >
+ > Player loses: misses target by 18
+
+ Now, we can add a code some handle the player matching the target.
+
+5. Edit the **if-else-if-else-statements.js** document, add the following bolded code, 
+and then remove the strikethrough code and save it:
 
 
 

@@ -740,9 +740,106 @@ We are going to use the **switch** statement by simulating a game where the play
 >
 > console.log("keyName:", keyName);
 
-The **Math.floor(Math.random() * keys.length)** expression is selecting a number 
-from **0** to **7** that is then used by **charAt** to select the character from the **keyNames**
-string variable.
+The **Math.floor(Math.random() * keys.length)** expression is selecting a number from **0** to **7** that is then used by **charAt** to select the character from the **keyNames**string variable.
+
+4. Run a few tests by reloading the **switch-statement.html** web page in your web browser with the console window open. Here are some examples of the console output:
+
+* keyName: D
+* keyName: a
+
+5. Edit the **switch-statement.js** document so that it includes the following lines and then save it. The **switch** statement expression converts the character into lowercase so that each case statement can check for one value. Here, we are checking whether the case value is equal to the switch term:
+
+> switch (keyName.toLowerCase()){  
+>
+>  case "a":
+>
+> console.log("move left"); //This block will execute when break; // keyName is a
+>
+> case "d":
+>
+> console.log("move right");//This block will execute when break; // keyName is d
+>
+> case "w":
+>
+> console.log("move up");//This block will execute when break; // keyName is w
+>
+> case "s":
+>
+> console.log("move down");//This block will execute when break; // keyName is s
+> 
+> }
+
+The **switch** statement uses one expression and then determines the lines of code to process based on matching the result with the **case** statements. It is important to note that without a **break** statement,all the code to the end of the **switch**statement is processed once one **case** statement matches the expression value.
+
+6. Reload the **switch-statement.html** web page in your web browser with the console window open. (page 150)
+
+Let's use the **IJKM** keys to perform the same tasks. We'll use the **I** key for up, the **J** 
+key for left, the **K** key for right, and the **M** key for down.
+
+Edit the **switch-statement.js document**, include the following lines and save it. 
+
+> var keyNames = "WASDwasdIJKMijkm"; 
+
+ Next, add the case statements for each; and it should be inputted after the **switch (keyName.toLowerCase()){**
+
+> case "a":
+> 
+> case "j":
+> 
+> console.log("move left");
+> 
+>  break;
+>
+>  case "d":
+>
+> case "k":
+>
+> console.log("move right");
+>
+> break;
+>
+> case "w":
+>
+> case "i":
+>
+> console.log("move up");
+>
+>  break;
+>
+>  case "s":
+>
+> case "m":
+>
+> console.log("move down");
+>
+> break;
+>
+> }
+
+When **case** statements are not followed by a **break**, the next case statement's code is also processed.
+
+7. Reload the switch-statement.html web page in your web browser with the console window open. 
+8. Edit the **switch-statement.js** document, include the following lines, and then save it. First, let's add a few test characters:
+
+> var keyNames = "WASDwasdIJKMijkmRTXPrtxp";
+
+Next, let's add the default statement; it will be added after the **break;**
+
+> default:
+>
+> console.log("invalid key");
+>
+>  break;
+
+9. Reload the **switch-statement.html** web page in your web browser with the console window open. Repeat this until you see a result indicating an invalid key.
+
+###  Loop Statements
+Loop code blocks are also called iterative blocks. They are designed to continue processing the code in their blocks until the **loop** statement expression becomes false. Iteration is a term that's used to indicate one time through the loop.
+
+***Note: A loop that does not terminate is called an infinite loop. A web browser may display a dialog with the option to terminate long-running loops.***
+
+### for Statement
+The **for** statement repeats the code until the repeat expression becomes **false**.
 
 
 

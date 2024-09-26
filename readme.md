@@ -838,8 +838,19 @@ Loop code blocks are also called iterative blocks. They are designed to continue
 
 ***Note: A loop that does not terminate is called an infinite loop. A web browser may display a dialog with the option to terminate long-running loops.***
 
-### for Statement
+### for Statement (page 153/116)
 The **for** statement repeats the code until the repeat expression becomes **false**.
+
+| **Operator** | **Description** | **Examples**  | **Results** |
+|--------------|-----------------|---------------|-------------|
+| ++           | Increment       | var i=1 i++   | i=1 i=2     |
+| --           | Decrement       | var i=10 i--  | i=10 i=9    |
+| +=           | Addition        | var i=1 i+=4  | i=1 i=5     |
+| -=           | Subtraction     | var i=10 i-=4 | i=10 i=6    |
+| *=           | Multiplication  | var i=2 i*=5  | i=2 i=10    |
+| /=           | Division        | var i=9 i/=3  | i=9 i=3     |
+
+
 
 
 

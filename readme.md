@@ -678,10 +678,74 @@ A variable for the lucky and unlucky number are added and are output to the cons
 > console.log("Unlucky score:", unlucky);
 >
 >  if (lucky != unlucky && player == lucky){
+> 
 >  console.log("Player wins: matches lucky score.");
->  }else if (player == target){
->  console.log("Player wins: ties target " + target);
->   }
+> 
+>  }else if (lucky != unlucky && player == unlucky){
+> 
+>  console.log("Player loses: matches unlucky score.");
+> 
+>   }else (player == target) {
+>
+> console.log("Player wins: ties target " + target);
+> 
+> }
+
+Reload the **if-else-if-else-statements.html** web page in your web browser with the console window open. Repeat this until you see a version for each of these two examples.
+
+>  Target score: 7
+>
+> Player score: 14
+>
+>  Lucky score: 16
+>
+> Unlucky score: 20
+>
+> Player wins: matches lucky score
+
+The following is an example of a player matching the unlucky number, but not the lucky number:
+>  Target score: 4
+>
+> Player score: 9
+>
+> Lucky score: 3
+>
+> Unlucky score: 9
+>
+> Player loses: matches unlucky score.
+
+* Check page **144** to page **146** for the continuation of this exercise.
+
+### The break Statement
+The **break** statement is used within blocks for **loop** statements and the **switch** statements. When the **break** statement is encountered inside **loop** statement and **switch** statement blocks, program flow continues on the next line following the block. The syntax is as follows:
+
+1. break
+2. break label
+
+The second syntax form is required when it's used within a labeled statement block. 
+
+####  switch Statement (page 147)
+The **switch** statement defines a block of code divided up by **case** statements and an optional **default** statement. The **case** statements are followed by a possible value for the **switch** statement expression and then a colon (:)
+
+###  Exercise 3.08: Writing a switch Statement and Testing It
+We are going to use the **switch** statement by simulating a game where the player can move their playing pieces using their keyboard. They can move left with the **A** key, right with the **S** key, up with the **W** key, and down with the **Z** key. To simulate a random selection of the keys, in either uppercase or lowercase, from the **keyNames** string, a variable will be used. Let's get started: 
+
+1. Open the switch-statement.html document in your web browser. 
+2. Open the web developer console window using your web browser.
+3. Open the **switch-statement.js** document in your code editor, replace all of its content with the following code, and then save it:
+
+> var keyNames = "WASDwasd";
+>
+>  var keyName = keyNames.charAt(Math.floor(Math.random() * keyNames.length));
+>
+> console.log("keyName:", keyName);
+
+The **Math.floor(Math.random() * keys.length)** expression is selecting a number 
+from **0** to **7** that is then used by **charAt** to select the character from the **keyNames**
+string variable.
+
+
+
 
 
 

@@ -850,6 +850,18 @@ The **for** statement repeats the code until the repeat expression becomes **fal
 | *=           | Multiplication  | var i=2 i*=5  | i=2 i=10    |
 | /=           | Division        | var i=9 i/=3  | i=9 i=3     |
 
+###  Exercise 3.09: Writing a for Loop and Testing It
+This exercise demonstrates using the **for** statement to create an increasing counter and decreasing counter.
+
+1. Open the **for-statement.js** document in your code editor, replace all of its content with the following code, and then save it:
+
+> for(var i = 1; i<= 5; i++){
+>
+> console.log(i);
+>
+>  }
+
+
 
 
 

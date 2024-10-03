@@ -138,17 +138,46 @@ The operators we look at can be grouped as follows:
 * Logical
 * typeof
 
+| **Operator** | **Description** | **Examples** | **Results** |
+|--------------|-----------------|--------------|-------------|
+| **           | Exponentiation  | 2**3         | 8           |
+| /            | Division        | 200/5        | 40          |
+| /            | Division        | 12/5         | 2.4         |
+| %            | Reminder        | 200/5        | 0           |
+| %            | Reminder        | 12/5         | 2           |
+| *            | Multiplication  | 12.5*10      | 125         |
+| +            | Addition        | 100+100      | 200         |
+| -            | Subtraction     | 500-200      | 300         |
+
+
+| **Operator** | **Description**                              | **Examples** | **Results** |
+|--------------|----------------------------------------------|--------------|-------------|
+| ==           | Equality/Equal to                            | 1==1         | true        |
+| ==           | Equality/Equal to                            | 1==2         | false       |
+| ==           | Equality/Equal to                            | 1=='1'       | true        |
+| ===          | Equality before any atomic data conversion   | 1===1        | true        |
+| ===          | Equality before any atomic data conversion   | 1==='1'      | false       |
+| !=           | Inequality                                   | 1!=1         | false       |
+| !=           | Inequality                                   | 1!='2'       | true        |
+| !=           | Inequality                                   | 1!=2         | true        |
+| !==          | Inequality before any atomic data conversion | 1!=='2' or 2 | true        |
+| >            | Greater than                                 | 105>100      | true        |
+| <            | Less than                                    | 50<80        | true        |
+| >=           | Greater than or  equals                      | 100>=90      | true        |
+| <=           | Less than or equals                          | 100<=104     | true        |
+
+
 > Note
  It's good practice to surround operators with a space. Exceptions are to not use spaces before or after the grouping operator ( ) and before the logical not ! operator.
 
  #### Exercise 3.01: Implementing Expressions and Operators
  1. Open the web developer console window using your web browser.
 Type the items on the lines beginning with the **>** symbol. The console window will show a response on the lines beginning with the **<** symbol.
- 2. Write the following code to add two literal whole numbers:
+ 1. Write the following code to add two literal whole numbers:
   > 200 + 200
  > \\output
  >  400
-3. 
+1. 
  > 100 - 10 + " Main Street"
  > \\Output. 
 >  "90 Main Street"
@@ -861,8 +890,21 @@ This exercise demonstrates using the **for** statement to create an increasing c
 >
 >  }
 
+### do...while Statement
+The **do...while** statement is a loop that executes code until the repeat expression value becomes false. The repeat expression is evaluated after all the statements have been processed, resulting in the guarantee that they are processed once. 
 
+### Exercise 3.10: Writing a do...while Loop and Testing It
+In this exercise, you will use the **do…while** loop to simulate iterating the roll of two dice until they have the same value. 
 
+1. Open the **do-while-statements.js** document in your code editor, replace all of its content with the following code, and then save it:
+
+1.  do{
+2.  var die1 = Math.floor(Math.random() * 6) + 1;
+3.  var die2 = Math.floor(Math.random() * 6) + 1;
+4. console.log("Die 1:", die1, "Die 2:", die2);
+5.  }while(die1 != die2);
+
+The second and third lines each compute a random number from 1 to 6 and store it in a variable. Those variables are displayed on the fourth line. These lines are always executed once. The while condition is true if the values of the die1 and die2 variables are not equal. If the values are equal, the expression is false and the loop repeats. If the values are not equal, any statements that follow the do…while loop are processed.
 
 
 

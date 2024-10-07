@@ -906,12 +906,53 @@ In this exercise, you will use the **do…while** loop to simulate iterating the
 
 The second and third lines each compute a random number from 1 to 6 and store it in a variable. Those variables are displayed on the fourth line. These lines are always executed once. The while condition is true if the values of the die1 and die2 variables are not equal. If the values are equal, the expression is false and the loop repeats. If the values are not equal, any statements that follow the do…while loop are processed.
 
+2. Edit the do-while-statements.js document so that it includes the following bolded lines and then save it:
 
+1. let iterations = 0;
+2. do{
+3. iterations++;
+4. var die1 = Math.floor(Math.random() * 6) + 1;
+5. var die2 = Math.floor(Math.random() * 6) + 1;
+6. console.log("Die 1:", die1, "Die 2:", die2);
+7. }
+8. while(die1 != die2);
+9. console.log("The matched value is: ", die1);
+10. console.log("Number of iterations: ", iterations);
 
+ The first line, **let iterations**, is declaring a variable named iterations and assigning it to **0**. Then in the **do…while loop**, the iterations variable, **iterations++**, is incremented by **1**. After the loop,the matched value and the iterations are displayed.
 
+ ### while Statement
+  The **while** statement is a loop that executes code if the repeat expression is **true/false**. The repeat expression is evaluated before any code is executed, so there is the possibility that no code is processed if it is **false** the first time round.
 
+  ###  Exercise 3.11: Writing a while Loop and Testing It
+  In this exercise, we will use the while loop to simulate how many dice rolls it takes to roll an even number. Let's get started:
 
+  1. Open the while-statement.js document in your code editor, replace all of its content with the following code, and then save it:
 
+* let iterations = 0;
+* while (iterations <10){
+* console.log("iterations:", iterations);
+* iterations ++;
+*  }
+
+This is just the initial shell for a while loop that repeats 10 times. The while loop's repeat expression is true if the iterations variable is below the value of 10. The first time the expression is evaluated, the iterations variable is 0. Inside the while loop, the iterations variable is incremented by 1 on the first line and will increase from 0 to 9 on each iteration of the loop.
+
+2. Edit the while-statement.js document using the following:
+
+* let die;
+*  while (iterations <10){
+*   die = Math.floor(Math.random() * 6) + 1;
+*   if (die % 2 == 0){
+*    break;
+*     }
+*     iterations ++;
+*      }
+*      console.log("Number of iterations: ", iterations + 1);
+*      console.log("Die value: ", die);
+
+This adds an if block to test for an even number of the dice roll. If true, the break statement terminates the while loop and the line following it is processed. The two lines following the while loop display how many iterations occurred and the value of the dice roll for that iteration.
+
+The while-loop use a Boolean expression to determine whether any iterations of the code it contains occurred. In this case, if the iterations variable was greater than 10, no iterations would have occurred.
 
 
 

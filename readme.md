@@ -954,6 +954,43 @@ This adds an if block to test for an even number of the dice roll. If true, the 
 
 The while-loop use a Boolean expression to determine whether any iterations of the code it contains occurred. In this case, if the iterations variable was greater than 10, no iterations would have occurred.
 
+### for...in Statement
+The **for...in** statement allows us to iterate over an object data type. The variable in the **for** expression holds one of the names of the name-value pairs of the object, which are the names of the properties and methods of the object. The syntax is as follows:
+*  for (variable in object){
+*  Statement
+*  Statement
+*   }
+*   for (variable in object)
+*   Single Statement
+
+### Exercise 3.12: Writing a for...in Loop and Testing It
+This exercise applies the for...in loop to the ready-made location object and to a programmer-created object. You can access object names and values by using them. 
+
+1. Open the for-in-statement.js document in your code editor, replace all of its content with the following code, and then save it:
+
+* for (let name in location) {
+*  console.log(name);
+*   };
+
+This iterates the web browser-created location object.
+
+The following output shows the names of all the **location** object's properties and methods.
+
+* replace
+* href
+* ancestorOrigins
+* origin
+* protocol
+* host
+* hostname
+* port
+* pathname
+* search
+* hash
+* assign
+* reload
+* toString
+
 
 
 

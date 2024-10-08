@@ -10,4 +10,4 @@ while (iterations < 10){
 	iterations ++;
 }
 console.log("Number of iterations: ", iterations + 1);
-console.log("Die value: ", die);
+console.log("Die value: ", die); 

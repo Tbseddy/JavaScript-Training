@@ -991,6 +991,95 @@ The following output shows the names of all the **location** object's properties
 * reload
 * toString
 
+2. Edit the for-in-statement.js document, replace it with the following code, and then save it:
+
+* var stopWatch = {
+* elapsedTime: 0,
+*  resultsHistory: [],
+*  isTiming: true,
+*  isPaused: true,
+*  start: function(){console.log("start");},
+*  pause: function(){console.log("pause");},
+*  resume: function(){console.log("resume");},
+*  stop: function(){console.log("stop");}
+*   };
+*   for (const name in stopWatch) {
+*    console.log(name, ":", stopWatch[name]);
+*     };
+
+
+###  continue Statement
+The **continue** statement stops execution inside a loop or a labeled loop for the current iteration and starts the execution of the next loop iteration. The loop statements then determine whether another iteration should occur.
+
+### Labeled Statement
+The **Labeled** statement is used to create loop flows and conditional flows. It names either **block** statements or **loop** statements. 
+
+When a loop statement is named, the statements are processed until a break statement or continue statement is encountered inside the block that references the label. 
+
+When a break statement is encountered, the program flow continues on the line after the labeled statement block referenced by the break statement. If a continue statement is encountered, the program flow continues on the first line of the block referenced by the continue statement. A continue statement requires the labeled statement to be a loop. Both break statements and continue statements must appear within the labeled statement block that they reference. They cannot appear outside the labeled statement block that they reference. They can appear in nested labeled blocks and reference outer labeled blocks. Labeled statements are less commonly used because they are prone to creating confusing or difficult to follow program flow.
+
+### Writing and Invoking Functions
+Functions are the basic building blocks when it comes to writing JavaScript programs. A function is one or more statements that can optionally receive data input and provide data output. The statements in a function are not used until the function is invoked. Invoking a function is also known as calling the function.
+
+#### Function Declaration
+You can define a function as a statement. This is called a function definition or declaration. The syntax is as follows:
+* function name(optional parameter list) {
+*  //Statements
+*  //Optional return statement
+*  }
+
+It starts a line of code with the function keyword. It is followed by a name. The name is how the function will appear in other code. The list of comma-separated parameters are names for the input values to a function. Parameters are essentially variables within the function. They are enclosed in parentheses. The block statement then contains the code. Once a function is declared, it can be invoked either on a line of code by itself or within an expression. In the case of its use in an expression, the function typically returns data.
+
+When a JavaScript function is declared as a statement, it can be invoked by statements that appear before it. This is called **hoisting.**
+
+* Invoking a function requires to append parentheses around the function's name
+
+#### Function Expression
+In this variation, you can define a function as part of an expression. There is no name for the function.However, because a function is a data type, it can be assigned to a variable. The variable can then be used to invoke the function. 
+
+Here is an example of defining and invoking a function expression.
+
+This example shows the function as part of an assignment expression. The right-hand side of the assignment is the function without a name. The left-hand side is the variable:
+
+*  var getDiceValue = function(){
+*  return Math.floor(Math.random() * 6) + 1;
+*  }
+
+ In this case, the variable can be used to invoke the function:
+
+ var rollValue = getDiceValue() + getDiceValue();
+
+ ### Arrow Function Expression
+Arrow functions were introduced in ES6. They are defined similarly in an expression, such as when defining function expressions. They offer syntactically compact alternatives over defining a function expression. There is nothing different in how they are invoked. The => symbol is the telltale sign of an arrow function being defined. Also, the function keyword is not used. The concise variation, without a function body, can return an expression with or without a return statement. This differs from a function expression, which requires the return statement to return a value. The syntax is as follows:
+
+*  (optional parameter list) => {
+*  //Statements
+*   //Optional return statement
+*    }
+*    (optional parameter list) => //Expression or return statement
+
+Parameter parentheses are optional when a single parameter is named:
+
+* parameter => {
+*  //Statements
+*  //Optional return statement
+*  }
+*  parameter => //Expression or return statement
+
+Parentheses are required if there is no parameter:
+
+* () => {
+* //Statements
+*  //Optional return statement
+*   }
+*   () =>//Expression or return statement
+
+**JavaScript arrow functions cannot be invoked by statements that appear before it.**
+
+### Reacting to User Input Events and Updating the DOM
+JavaScript is used to interact with the DOM. This entails responding to DOM-generated events such as a user clicking a button. It also entails updating content and HTML elements, such as displaying a notification message.
+
+### The DOM HTML Element Object
 
 
 

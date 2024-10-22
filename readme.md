@@ -1188,3 +1188,87 @@ The resulting DOM is as follows:
 * <li>Planting Moon</li>
 * <li>Milk Moon</li>
 * </ul>
+
+### DOM Events
+Events are messages that you can provide to code so that it can handle it; for example, the user clicking a button on an HTML page. The document model objects use the addEventListener method to add your code so that it is processed when the event occurs. The syntax is as follows:
+
+> target.addEventListener(event-type, listener)
+
+The event type parameter is a predefined name for the event. For example, click is the name for a mouse click event. The listener is an object that has the ability to "listen" to events. Functions are objects that can "listen" to events. Functions that are used as event listeners have one parameter, which is an Event object.
+
+For example, the **addEventListener** method for a click event that uses a function literal 
+can be written as follows:
+
+* helpButtonEle.addEventListener("click", function(e)){
+* console.log("Something was clicked");
+* }
+
+### Exercise 3.17: Working with DOM Manipulation and Events
+This exercise will accept an input value from a web page that aims to guess a number from 1 to 10. A button is used to check the input value against a random number that's generated from 1 to 10. Depending on whether there's a match, the display property of the other elements on the web page is toggled to hide or show the element. Also, the number that's generated is displayed on the page. Let's get started:
+
+1. Open the number-guess.html document in your web browser. 
+2. Edit the number-guess.js document, update it using the bolded text, and then save it.
+
+At the top of the file, all the elements we need to access in the HTML have been assigned to a variable: 
+
+* let resultsMsgEle = document.getElementById('results-msg');
+* let matchedMsgEle = document.getElementById('match-msg');
+* let noMatchMsgEle = document.getElementById('no-match-msg');
+* let numberToGuessEle = document.getElementById('number-to-guess');
+* let guessInputEle = document.getElementById('number-guessed');
+* let testButtonEle = document.getElementById('test-button');
+
+Next, add the DOM interface to get the value property from the input element's guessInputEle object. In case the user did not enter an integer, the parseInt JavaScript built-in function will flag that as not a number.Then, the if statement expression is true only if the number is between 1 and 10 inclusive:
+
+* function testMatch(e){
+* let numberGuessed = parseInt(guessInputEle.value);
+* if(!isNaN(numberGuessed) &&numberGuessed> 0 &&numberGuessed<= 10){
+* }
+* }
+
+In the if statement block, the first step is to get a random integer from 1 to 10. Then, we use an if...else statement block if the input number matches the generated number. For now, we can test this with outputs to the console window:
+
+* if(!isNaN(numberGuessed) &&numberGuessed> 0 &&numberGuessed<= 10){
+*  let numberToGuess = Math.floor(Math.random() * 10 + 1);
+*  if (numberGuessed == numberToGuess){
+*   console.log("MATCHED!");
+*  }else{
+*   console.log("NOT MATCHED!");
+*  }
+*  console.log("Number guessed:", numberGuessed);
+*  console.log("Number to match:", numberToGuess);
+* }
+
+3. Reload the number-guess.html web page in your web browser with the console window open, enter an integer from 1 to 10, and click the Test Your Guess button a few times.
+
+Here are two test results:
+
+* NOT MATCHED!
+* Number guessed: 1
+* Number to match: 9
+* MATCHED!
+* Number guessed: 1
+* Number to match: 1
+
+There are two general categories of bugs: syntax and logic:
+
+* Syntax: A syntax bug is a malformed JavaScript code.
+* Logic: A logic error occurs when code that is syntactically correct does not perform as intended.
+
+### Logic Bugs
+A logic error occurs when code that is syntactically correct does not perform as intended. Logic errors often occur due to data and expressions not using or computing the correct values. When a JavaScript program encounters a logic bug, it stops executing the remaining code statements. There is often no error message to pursue. This makes logic errors more challenging to resolve and you want to use debugging 
+tools to aid in their resolution.
+
+### Debugging
+Fixing bugs is called debugging. Debugging requires tools, skills, and techniques. It usually involves correcting the source code. 
+
+Using the **console.log** method and showing the values in the console window is one tool we can use. This allows you to view values at certain points in the program to see whether they are the expected values. One of the drawbacks of this approach is that this requires you to put the **console.log** method in your source code, which ultimately needs to be removed as a best practice. Another issue is that arguments to the **console.log** methods are potentially bugs themselves. 
+
+The other alternative is to use a debugger. The top desktop web browsers have a JavaScript debugger.
+
+### Debuggers
+To help resolve logical errors, you usually need a debugger. A debugger is a tool that lets you pause a program, follow each step, and examine the data values at those steps. Most desktop web browsers have a debugger built into its web developer view. Here is an example of the debugger for the Chrome web browser's developer tools
+
+> Activity 3.01
+
+To shuffle a to do list

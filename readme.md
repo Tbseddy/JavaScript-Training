@@ -1080,8 +1080,111 @@ Parentheses are required if there is no parameter:
 JavaScript is used to interact with the DOM. This entails responding to DOM-generated events such as a user clicking a button. It also entails updating content and HTML elements, such as displaying a notification message.
 
 ### The DOM HTML Element Object
+The HTML elements are represented as objects. Since they are objects, there are methods and properties we can use for them. These properties and methods are 
+inherited from a hierarchy of DOM objects that are provided by the web browser, starting with an object called Node. For example, the ol element shares methods and properties from the following hierarchy of DOM objects:
 
+> Node⇒Element⇒HTMLElement⇒HTMLOListElement
 
+The following are a few of the properties and methods that are inherited from a hierarchy of DOM elements above it:
 
+* **innerHTML:** With the source element, this is the HTML and content contained in an element.
+* **innerText:** With the source HTMLElement, this is the rendered text of an element.
+* **addEventListener(…):** With the source element event target, this is used to register a function to respond to events such as a user clicking on the element.
+* **appendChild(…):** With the source node, this adds a node to a parent node; for example, to add an li element to the end of an ol element, or to add a p element to the end of a div element.
 
+### Getting Access to Elements in the DOM
+ The following are **document** objects that contain methods that we can use to get one or more **HTMLElement** objects from the DOM:
 
+ * **getElementById(element-id):** The element ID is the ID attribute of the element. Returned as an HTMLElement object.
+ * **getElementsByTagName(element-name):** The element name is the static name of HTML elements such as body, div, p, footer, ol, and ul. This returns a NodeList object. A NodeList object is similar to an array of objects.
+ * **getElementsByClassName(css-class-name):** The css class name is the class attribute of the elements. This returns a NodeList object. A NodeList object is similar to an array of objects.
+ * **querySelector(selectors):** The selectors are like the selectors that are used in CSS. This returns an HTMLElement object for the first element that's matched.
+ * **querySelectorAll(selectors):** The selectors are like the selectors that are used in CSS. This returns a NodeList object. A NodeList object is similar to an array of objects for each element that's matched.
+ * **createElement(tag name):** This creates an HTMLElement object for the HTML tag name that's supplied.
+ * **createTextNode(data):** This creates a Text object that can be placed inside an HTML element, for example, inside an h1 or a p element. The data argument is a string.
+
+The following is an example of the **document** object's **getElementById** method being used to access a DOM element. This creates an object from an element DOM that has the id attribute of **user-id:**
+
+> let userIdEle = getElementById("user-id");
+
+This is an example of the document object's getElementByTagName method being used to access DOM elements. This creates a collection of objects representing all the div elements in the document. Further steps are needed to access each element, such as a loop:
+
+>  let divEles = getElementByTagName("div");
+
+This is an example of the document object's getElementByClassName method being used to access DOM elements. This creates a collection of objects representing all the elements that use the notice class in the document. Further steps are needed to access each element, such as a loop:
+
+> let noticeEles = getElementByClassName("notice");
+
+### Creating Elements and Content in the DOM
+You may want JavaScript to add HTML elements and content to a web page. This is done by updating the DOM. The document object has two methods that are useful for this:
+
+* **createElement(tag name):** Creates an HTMLElement object for the HTML tag name that's supplied.
+* **createTextNode(data):** Creates a text object that can be placed inside an HTML element, for example, inside an h1 or a p element. The data argument is a string.
+
+The following is an example of the document object's createElement method being used to create an li element:
+
+>  let liEle = document.createElement("li");
+
+The following is an example of the document object's createTextNode method being used to create a Milk Moon element:
+
+>  let elementTextNode = document.createTextNode("Milk Moon");
+
+Putting this all together, we can append elements and text nodes to the DOM. Consider the following HTML list of names for the November full moons:
+
+ * <ul>
+*  <li>Flower Moon</li>
+*  <li>Planting Moon</li>
+*  /ul>
+
+Suppose we want to append another li element to the Milk Moon. To do that, we use the document object's createElement method to create an li element:
+
+> let liEle = document.createElement("li");
+
+The createElement method returns an HTMLElement object. It provides the appendChild method, which we can use in this instance. For the appendChild method argument, the document object's createTextNode method can supply the required text node:
+
+> liEle.appendChild(document.createTextNode("Milk Moon"));
+
+ The resulting DOM is as follows:
+
+*  <ul>
+* <li>Flower Moon</li>
+* <li>Planting Moon</li>
+* <li>Milk Moon</li>
+* </ul>
+
+Let's take this a bit further and assume that we have a list of full moon names in an array:
+
+* let mayMoons = [
+* "Flower Moon",
+* "Planting Moon",
+* "Milk Moon"
+* ];
+
+Now, we want to use the array to populate a ul element that has the id attribute of full-moons: 
+
+* <ul id ="full-moons">
+* <li>Grass Moon</li>
+* <li>Egg Moon</li>
+* <li>Pink Moon</li>
+* </ul>
+
+First, you may want to remove the existing li elements from the ul element. You can do that by using the document.getElementById method and the innerHTML property of the element:
+
+* let moonsEle = document.getElementById("full-moons");
+* moonsEle.innerHTML = "";
+
+ Next, we can loop through the array, appending li elements to the moon names:
+
+*  for (let i= 0; i<= mayMoons.length - 1; i++){
+* let liEle = document.createElement("li");
+* liEle.appendChild(document.createTextNode(mayMoons.length[i]));
+* listEle.appendChild(liEle);
+* }
+
+The resulting DOM is as follows:
+
+* <ul id ="full-moons">
+* li>Flower Moon</li>
+* <li>Planting Moon</li>
+* <li>Milk Moon</li>
+* </ul>

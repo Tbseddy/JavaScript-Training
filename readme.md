@@ -1270,5 +1270,27 @@ The other alternative is to use a debugger. The top desktop web browsers have a 
 To help resolve logical errors, you usually need a debugger. A debugger is a tool that lets you pause a program, follow each step, and examine the data values at those steps. Most desktop web browsers have a debugger built into its web developer view. Here is an example of the debugger for the Chrome web browser's developer tools
 
 > Activity 3.01
+>
+> To shuffle a to do list
 
-To shuffle a to do list
+## Chapter Four:  JavaScript Libraries and Frameworks
+
+As developers, we often rely on external software that lets us dedicate ourselves to the source code that's the most relevant to our product or business. This software does this by simplifying specific tasks and abstracting away complexity for us. Those pieces of external software are what we refer to as **frameworks** or **libraries.**
+
+The following are some of the tasks that modern JavaScript frameworks can support us with:
+
+* Performance rendering of complex or dynamic single-page applications (SPAs)
+* Managing ongoing dataflow between the controllers and views of client-side applications
+* Creating sophisticated animations
+* Creating with fast and straightforward server APIs
+
+###  Framework versus Library
+Library describes an external collection of functions that perform a given task. These functions are made accessible to us as users of the library via APIs. One useful library is **lodash**, which can, for example, remove all duplicated values from an array:
+
+* const duplicatedArray = [1,2,1,2,3];
+* const uniqueArray = lodash.uniq(duplicatedArray)
+* Out will be => [1,2,3]
+
+Frameworks, on the other hand, are a particular form of library. They are reusable code frames that build the foundation of a JavaScript application. In contrast to libraries, which extend your code with functionality, a framework can stand alone and is enhanced with your source code to create an app as you like.
+
+

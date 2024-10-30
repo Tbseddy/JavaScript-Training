@@ -1293,4 +1293,80 @@ Library describes an external collection of functions that perform a given task.
 
 Frameworks, on the other hand, are a particular form of library. They are reusable code frames that build the foundation of a JavaScript application. In contrast to libraries, which extend your code with functionality, a framework can stand alone and is enhanced with your source code to create an app as you like.
 
+A popular framework is Vue.js
+
+Another synonym you'll encounter in the JavaScript world to describe external source code is "package." One of those packages you may encounter in JS resources is Vanilla.js. We'll have a look at it in the next section.
+
+### Vanilla.js
+This specific framework follows the informal convention of including the JavaScript file extension with the name **nameOfFramework.js.** However, vanilla.js is not a framework; it's not even a library. People referring to vanilla.js are talking about plain JavaScript without any external code or tooling. The name is a running gag within the JavaScript community because some developers and non-developers think we need to use a framework for everything we build. We will discuss why this isn't the case later.
+
+### Popular JavaScript Frameworks
+We have just looked at lodash.js, a library that helps developers handle data structures; (to be used, for example, making arrays unique) and Vue.js, a framework for building modular and dynamic user interfaces. These are just two examples of quite popular and widely used JS frameworks/libraries. In addition to those, there is a vast and evergrowing number of external packages you can choose from. Each one of them is useful for solving one specialized set of problems.
+
+A few modern and often used alternatives that support creating browser applications are, for instance, React.js, Vue.js, and Angular.js. Other libraries that help you store and manage data in your app are MobX, VueX, and Redux.
+
+Then, there are frameworks such as Express.js or Hapi that let you create simple, easy-to-maintain, and performant REST APIs for Node.js.
+
+Some packages make building command-line interfaces (CLIs) or desktop applications easy.
+
+Most build and productivity tools for the JavaScript ecosystem are provided to the community as a library, too. Webpack, Parcel, and Gulp are a few of these tools.
+
+Not all of the available libraries are equally popular or useful. Their popularity depends on a few key facts:
+
+* Whether they fix a problem that bothers many developers
+* How well their API is defined and structured
+* The quality of their documentation
+* The level of performance optimization
+Keep these in mind when crafting a package that you want to become well known.
+
+### Everlasting jQuery
+One evergreen library that has been around for over a decade is jQuery. It touches almost every web app in one way or another and belongs in the toolkit of everybody who builds browser applications:
+
+**jQuery** provides, but is not limited to providing, the following features:
+* DOM manipulations
+* Event handling
+* Animated effects and transitions
+
+### Where to Find and How to Use External Code
+There are a few different approaches when it comes to including libraries in your program. Depending on those approaches, we get packages from different places.One is to copy the library's source code and to handle it as we wish. This approach is the most secure in the sense that we have all the control of the software and can customize it to fit our needs. However, by doing so, we give up compatibility and automated updates and patches. Most open-source projects host their code on GitHub or any other version control platform. Therefore, it's rather easy to access and fork the package's code. As soon as we download the source code, we can do whatever we want to get it working with our software. Possible solutions could be hosting it on our cloud distribution network (CDN) and accessing it from there or bundling it with our source code
+
+Another approach is downloading the package from a CDN from the client at runtime. The most popular CDN to exclusively host JavaScript libraries is cdnjs.com. It hosts thousands of libraries you can include in your markup without you having to worry about where to store it or how to upgrade it
+
+The following is an example of how you'd include Vue.js with your markup:
+
+* <html>
+* <script src="https://cdn.com/vue.js"></script>
+* <script type="text/javascript">
+* console.log("Vue was loaded: ", !!Vue)
+* // => Vue was loaded: true
+* </script>
+* </html>
+
+> Note
+> If you include packages by loading them from the browser during runtime, you have to be aware of the order of the script tags. They're loaded from top to bottom. Therefore, if you switched the two script tags in the preceding example, console.log would print that there is no Vue.js loaded, even though, eventually, it will be.
+
+The previous approach gained lots of popularity and is now by far the most common due to the development of the JavaScript ecosystem in recent years. It involves the Node.js Package Manager (npm). npm is a tool that, as its name suggests, takes care of JavaScript packages within the Node.js ecosystem. npm itself consists of three parts:
+
+* The website npmjs.com, for hosting all the documentation and package searches
+* The CLI that gets installed with Node.js
+* The registry, which is where all of the modules are stored and made installable:
+
+Using npm requires a Node.js version to be installed on your machine and any tool to bundle all your JavaScript together to make it executable in the browser.
+
+* // in your terminal
+* $ npm install <package>
+
+All of the aforementioned methods to include libraries and frameworks with your source code are valid and have their preferred use cases. However, it's likely that you are going to use the latter the most as new projects are set up within the Node.js ecosystem, which is where modules and npm come from, naturally. Nonetheless, knowing how to use external resources without npm can come in handy when you want something much more comfortable and quicker than an entire project setup. Therefore, let's perform an exercise in which we will load a third-party library into our code
+
+### Exercise 4.01: Using a Third-Party Library in Your Code
+As we've already discovered, using external software, namely libraries and frameworks, is an extremely useful skill as it can save a lot of resources and help you build highly functional apps. In this exercise, we are going to find and utilize a library ourselves. We'll use the lodash library to create an array of unique values. Let's get started:
+
+1. Create a new HTML file:
+2. Find the CDN URL for the latest lodash version. To do so, navigate to cdnjs.com and search for lodash, and then copy the URL highlighted in the figure:
+3. To look at the lodash documentation, navigate to lodash.com. There, you can use the search bar to find the "uniq" function
+4. Load the CDN URL in a script tag's src attribute. To do so, paste the URL you previously copied in step 2
+5. Create another script tag and write JS code using lodash to make an array, [1,5,5,2,6,7,2,1], that contains unique values:
+6. Open your HTML, including the JavaScript, in a browser and verify that you created an array with unique values inside the browser's development tools console:
+
+**In this exercise, we used the lodash library to create an array that contains sole unique values.**
 

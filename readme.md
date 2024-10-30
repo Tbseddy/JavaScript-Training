@@ -1362,11 +1362,74 @@ All of the aforementioned methods to include libraries and frameworks with your 
 As we've already discovered, using external software, namely libraries and frameworks, is an extremely useful skill as it can save a lot of resources and help you build highly functional apps. In this exercise, we are going to find and utilize a library ourselves. We'll use the lodash library to create an array of unique values. Let's get started:
 
 1. Create a new HTML file:
-2. Find the CDN URL for the latest lodash version. To do so, navigate to cdnjs.com and search for lodash, and then copy the URL highlighted in the figure:
+2. Find the CDN URL for the latest lodash version. To do so, navigate to cdnjs.com and search for lodash, and then copy the URL highlighted in the figure: (https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js)
 3. To look at the lodash documentation, navigate to lodash.com. There, you can use the search bar to find the "uniq" function
 4. Load the CDN URL in a script tag's src attribute. To do so, paste the URL you previously copied in step 2
 5. Create another script tag and write JS code using lodash to make an array, [1,5,5,2,6,7,2,1], that contains unique values:
 6. Open your HTML, including the JavaScript, in a browser and verify that you created an array with unique values inside the browser's development tools console:
 
 **In this exercise, we used the lodash library to create an array that contains sole unique values.**
+
+### jQuery versus Vanilla.js
+Earlier, in the Everlasting jQuery section of this chapter, we had a look at jQuery and how it has an exceptional standing in the JavaScript community. To demonstrate why libraries and frameworks, but mainly jQuery, became popular, we will compare it to Vanilla.js (plain JS). 
+
+### Manipulating the DOM
+If we wanted to fade out and then remove one element in plain JavaScript, we would write verbose and less comprehensive code:
+
+**Using Vanilla,js**
+* const styles = document.querySelector('#example').style;
+* styles.opacity = 1;(function fade() {
+* styles.opacity -= .1;
+* styles.opacity< 0
+* ? styles.display = "none"
+* : setTimeout(fade, 40)
+* })();
+
+**Using jQuery**
+* $('#example').fadeOut();
+
+### Making XHR Requests
+A fundamental functionality of modern web pages and applications is requesting additional resources or data from remote servers. Every browser provides interfaces to execute these so-called XHR requests. Those interfaces can be used from JavaScript. As we can see in the following code examples, jQuery, compared to vanilla.js, lets us write  clean and self-explanatory code:
+
+**Using Vanilla.js**
+* const request = new XMLHttpRequest();
+* request.open("POST", "/example/api", true);
+* request.onreadystatechange = function() {
+* if (request.readyState != 4 || request.status != 200) return;
+* console.log("Successful XHR!");
+* };
+* request.send("example=payload");
+
+In comparison to the preceding snippet, the code for making calls to a server is much clear and readable in jQuery. It is more readable in the sense that it is very clear and understandable regarding what exactly the function needs as parameters and what it is going to do. Let's have a look at a POST Ajax request to the /example/api URL with a specified payload data and also a function that gets triggered when the request is successful:
+
+**Using jQuery**
+* $.ajax({
+* type: "POST",
+* url: "/example/api",
+* data: "example=payload",
+* success: function() {
+* console.log("Successful XHR!");
+* }
+* });
+
+> Note
+> jQuery assigns itself to the $ variable. Hence, in the code examples,$.
+> functionName could be replaced with jquery.functionName.
+
+> Note
+> The dev tools in all modern major browsers have adapted to $, but only as a 
+> wrapper for document.querySelector.
+
+### Exercise 4.02: Handling Click Events with jQuery
+In this exercise, we will identify how jQuery can help us react to events that get propagated when the target (in our case, a button) gets clicked. Let's get started:
+
+1. Create a new HTML file including a button tag with the ID exampleButton. This button will be our target:
+2. Find the latest jQuery CDN URL on cdnjs.com
+3. Read the jQuery documentation for .on()(https://api.jquery.com/on/) erytion
+4. Load in the CDN URL (https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js)
+5. Create a script tag containing code that logs a Hello World message to the console when you click the button
+6. Make sure you place the script tag after the button tag.
+7. Open the HTML in your browser and open the dev tool console.
+8. Press the Click me. button and verify that it prints Hello World to the console
+
 

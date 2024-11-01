@@ -1426,10 +1426,49 @@ In this exercise, we will identify how jQuery can help us react to events that g
 1. Create a new HTML file including a button tag with the ID exampleButton. This button will be our target:
 2. Find the latest jQuery CDN URL on cdnjs.com
 3. Read the jQuery documentation for .on()(https://api.jquery.com/on/) erytion
-4. Load in the CDN URL (https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js)
+4. Load in the CDN URL (https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js)
 5. Create a script tag containing code that logs a Hello World message to the console when you click the button
 6. Make sure you place the script tag after the button tag.
 7. Open the HTML in your browser and open the dev tool console.
 8. Press the Click me. button and verify that it prints Hello World to the console
 
+### UI Animation Using jQuery
+In addition to the use cases for jQuery that we have seen in the code examples in the Manipulating the DOM and Making XHR Requests sections and in Exercise 4.02: Handling Click Events with jQuery, there is another important functionality that jQuery provides us with: animating the user interface (UI).
 
+### Exercise 4.04: Animating a "Peek-a-boo" on Button Click
+In this exercise, you will build on the knowledge you have gained regarding how to handle events using jQuery. The relevant part, however, will be animating an element on the page. Whenever the **"Peek…"** button is clicked, the **…a-boo** headline will show up. Let's get started:
+
+1. Create a new HTML file that includes a button tag with the ID Peek..., a headline with the ID …a-boo, and a display: none style attribute:
+2. Load the latest jQuery CDN URL, from cdnjs.com (see Exercise 2, Handling Click Events with jQuery, step 2), inside a script tag:
+3. Create a script tag containing the code to select the peek button and add an onClick event listener:
+4. Inside the new script tag, write additional code to select the aboo headline and use the jQuery.fadeToggle function to animate the headline so that it's fading in and fading out:
+5. Open the HTML page in your browser and click the peek button.
+6. You should see the aboo headline fading in and fading out whenever you click the peek button:
+
+In this exercise, you used jQuery to execute yet another type of task in the browser. Animations in UIs can be as simple as our fading example, but they can also be very complex when building games or creating 3D animations.
+
+### Frameworks versus Core JavaScript
+To provide an actual use case that spells out the negative impact a library or framework may have on our application, in the following two exercises, we will create a list and render it to the screen. The first one will make use of an external library, whereas the second one will be written in raw JavaScript.
+
+### Exercise 4.05: Rendering a List of To-Dos Using React
+In this exercise, we're going to display a few list tags as bullet points of an imaginary todo list. To do so, we'll be using a massively popular library called react.js and its complementary react-dom.js. Let's get started:
+1. Create a new empty HTML file with a head and a div tag with the root ID inside the HTML body
+2. Go to cdnjs.com and  get the latest react.js ("https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/cjs/react.production.min.js") and react-dom.js ("https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/cjs/react-dom.production.min.js") CDN URLs and load the URLs into a script tag inside the HTML head:
+3. Use react.js and react-dom to create three list items and render them to the root
+div-element:
+4. Open the HTML page inside your browser and make sure that your todo list items are displayed correctly.
+5. Open the network tab of your browser's dev tools and have a glance at how many kilobytes of JavaScript was loaded:
+
+### Exercise 4.07: Creating a Library Yourself
+Our library won't be capable of much at first, but you may want to put some effort into it and extend it as you wish.
+**HeadlineCreator.js** is our library's name. It's a good name because it already hints at what it does; that is, it creates headlines. Technically speaking, our library will do the following:
+
+* Be accessible on the global window object of the current browser tab, just as we've seen with jQuery before: window.headlineCreator.
+* Provide a single method called createHeadline.
+* Allow us (through the createHeadline method) to create a headline with the given text and append it to a given parent element.
+* Take care of error handling for us, for instance, if we forgot to define some text to be displayed or passed an invalid selector for the parent element
+* To verify that our library is working and having an example of its usage, we will create, additional to creating the library itself, an HTML page including script tags using our HeadlineCreator.js library.
+
+1. Create an empty HTML file with a head tag, a body tag, and a div tag with an ID of root inside it:
+2. Load a local JS file with the name **headlineCreator.js** inside a **script** tag:
+3. Create the headlineCreator.js file inside of the same directory you created the empty HTML file in.

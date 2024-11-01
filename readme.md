@@ -1459,7 +1459,7 @@ div-element:
 4. Open the HTML page inside your browser and make sure that your todo list items are displayed correctly.
 5. Open the network tab of your browser's dev tools and have a glance at how many kilobytes of JavaScript was loaded:
 
-### Exercise 4.07: Creating a Library Yourself
+### Exercise 4.07: Creating a Library Yourself (I need explnation)
 Our library won't be capable of much at first, but you may want to put some effort into it and extend it as you wish.
 **HeadlineCreator.js** is our library's name. It's a good name because it already hints at what it does; that is, it creates headlines. Technically speaking, our library will do the following:
 
@@ -1472,3 +1472,18 @@ Our library won't be capable of much at first, but you may want to put some effo
 1. Create an empty HTML file with a head tag, a body tag, and a div tag with an ID of root inside it:
 2. Load a local JS file with the name **headlineCreator.js** inside a **script** tag:
 3. Create the headlineCreator.js file inside of the same directory you created the empty HTML file in.
+4. Inside the JavaScript file, create an IIFE and assign it to the headlineCreator variable:
+
+> Note: 
+>
+> IIFE stands for "immediately invoked function expression." This sounds more complicated than it is. IIFEs are functions that are executed at the very same moment they are defined. One use case for them in frameworks or libraries is to prevent name collisions with variables that are used in the source code. This includes the library. For example, using a create function within your library can cause weird side effects since this is a very common and ambiguous name. Hence, the library could be a different function than it was supposed to be.
+
+5. Within the IIFE, create another function and name it **createHeadline**. This function takes two parameters, **text** and **parentElementSelector**:
+6. Inside the IIFE headlineCreator, add a return statement. This return statement will return an object with a single key named createHeadline that has the value of the same name (just like the function name we created in the previous step):
+7. Extend the new function with a DOM query to look for an element with the parentElementSelector that is passed as an argument to the createHeadline function.
+8. Assign the result of the DOM query to a variable called parentElement:
+9. Next, create an h1 tag element and set the innerText attribute of this element to the text parameter that is passed to the function:
+10. Lastly, append the created headline to the node that we stored in parentElement:
+11. Refresh your HTML page and inside the dev tools console, call the window.headlineCreator.createHeadline function with any parameter you'd like. Then, view the result:
+
+## Chapter Five: Beyond the Fundamentals

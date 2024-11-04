@@ -1459,7 +1459,7 @@ div-element:
 4. Open the HTML page inside your browser and make sure that your todo list items are displayed correctly.
 5. Open the network tab of your browser's dev tools and have a glance at how many kilobytes of JavaScript was loaded:
 
-### Exercise 4.07: Creating a Library Yourself (I need explnation)
+### Exercise 4.07: Creating a Library Yourself ***(I need explnation)***
 Our library won't be capable of much at first, but you may want to put some effort into it and extend it as you wish.
 **HeadlineCreator.js** is our library's name. It's a good name because it already hints at what it does; that is, it creates headlines. Technically speaking, our library will do the following:
 
@@ -1487,3 +1487,66 @@ Our library won't be capable of much at first, but you may want to put some effo
 11. Refresh your HTML page and inside the dev tools console, call the window.headlineCreator.createHeadline function with any parameter you'd like. Then, view the result:
 
 ## Chapter Five: Beyond the Fundamentals
+In JavaScript, all primitive data types are immutable. This means that the value cannot be changed in memory. New values can be assigned to a variable, but the underlying data stored in memory cannot be modified directly.
+
+Complex data types work differently. They are also known as reference types. Reference types include the Object type and all of its derivatives, such as Array, Date, and Function. All reference types are passed by reference, hence the name. Therefore, if an object is modified through one reference, all the other references that share the same object will see it as updated too, since all of the references point to the same data in 
+memory.
+
+All primitives, and preexisting reference types are known as built-in data types. Each of these types has a corresponding object that provides functions for manipulating that type.
+
+### Creating Variables
+Variable creation is the means to assign a value to a symbol. In this circumstance, a symbol is a textual representation of the data, much like a container, which can be 
+used to move data through your program. It also improves the legibility of your code. There are multiple ways to create variables, including assignment to the global scope or 
+through the use of either the **var**, **let**, or **const** keywords.
+
+### A Note on Referencing
+Even at this early stage, it must be highlighted that JavaScript's referencing functionality can get rather confusing. The presence of closures, prototypes, global
+and local memory stacks, variable assignment variations, and function invocation options can leave even seasoned programmers scratching their heads.
+
+Only referencing with regard to data at the global level will be discussed in this chapter.
+
+### Global Assignment
+Assigning a variable without the use of var, let, or const will place the variable into the global scope. This value will then be accessible anywhere in your application unless a 
+variable of the same name exists within that scope. Redeclaring the same variable name without the use of a preceding keyword will overwrite the global reference, even if it's 
+assigned within a different scope.
+
+Declaring globally in a browser environment is equivalent to declaring the value on the global window object as a field.
+
+### Declaring with var
+Preceding variable assignment with the **var** keyword places the variable into function scope. This means the variable only exists at the same function as the assignment, 
+but not outside that function. Declaring with var in the global scope is equivalent to declaring without the var keyword.
+
+Redeclaring a variable with var, but in a nested scope, will not overwrite the variable of the same name in the outer scope.
+
+Using the var keyword, variables can be scoped (declared) even after they are used within the same scope. This is due to variable hoisting. Hoisting was explained in 
+Chapter 4, JavaScript Libraries and Frameworks.
+
+### Declaring with let
+The let keyword has a narrower scope. While var is considered to be functionally scoped, the let keyword is block scoped. This means that variables that are created 
+with var exist throughout a function's scope level, while let-declared variables are created and used at the block level, such as in if conditional blocks or for loops.
+
+For example, using let, a variable can be temporarily overwritten within a for loopwhile not changing a variable of the same name in the outer function. However, if var is 
+used instead, the outer variable will be changed:
+
+* var a=0;
+* for(var a in [0, 1]);
+* console.log( a );  // ==> a is now 1 (as modified by the loop)
+
+In the preceding example, the variable declared in the for loop matches the symbol declared outside of it. As such, the same variable reference is modified. However, in 
+the following example, the result is different, as the let-declared variable only exists within the context of the for loop, meaning the outside variable of the same name is left 
+untouched:
+
+* var a=0;
+* for(let a in [0, 1]);
+* console.log( a ); // ==> a is still 0 (not modified by the loop)
+
+Contrary to **var**, let-declared variables are not hoisted. If a scope declares a variable with **let**, accessing that variable before that let declaration statement (within the same 
+scope or in any inner scope) will raise an error (this is regardless of whether a variable with the same name has been created in an outer scope):
+
+* glob=1; {glob=2; let glob=3;} // ==> can't access lexical declaration `glob' before 
+* initialization
+* glob=1; {glob=2; var glob=3;} // ==> accepted syntax
+
+### Declaring with const
+The **const** keyword works with the same scoping and hoisting rules as the **let** keyword. The difference with **const** is that it is assumed the variable will not change throughout 
+its lifetime. Using **const** allows the JavaScript engine to make certain optimizations at compile time since it expects the data to remain constant at runtime.

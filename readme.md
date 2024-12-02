@@ -1595,3 +1595,26 @@ The high-level steps for the activity are as follows:
 > 
 > The final condition will always be true if the others have failed, so the condition itself can be skipped. Each condition will not be evaluated if the previous condition 
 has been returned from the function.
+
+### Working with Objects
+In JavaScript, objects are the primary configurable data structures from which all other complex data types extend, including Array and Date. Objects work like a hash map; they contain key/value properties that can contain any data type, including functions and other objects. An object is defined using curly braces, much like a block:
+
+> var myObject = {};
+
+The values that are added to an object are "members" of that object. Those members are accessible using dot notation:
+* var myObject = {foo: "bar"};
+* console.log(myObject.foo);
+* // => "bar"
+
+### Built-In Array Functions
+The array type provides many more functions that are useful in traversing, copying, concatenating, and presenting array structures. The following table lists some 
+important and useful functions that are available as members of the array type:
+
+| **Method**                                  	| **Description**                                                                                                                                                                                                                                                                                                                   	|
+|---------------------------------------------	|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
+| **push (<value>)**                          	| Appends a value to the end of the Array                                                                                                                                                                                                                                                                                           	|
+| **pop ()**                                  	| Remove the last value from the end of the Array and returns it.                                                                                                                                                                                                                                                                   	|
+| **unshift (<value>)**                       	| Appends a value to the beginning of the Array                                                                                                                                                                                                                                                                                     	|
+| **shift ()**                                	| Removes the first value from the beginning of the Array and returns it.                                                                                                                                                                                                                                                           	|
+| **splice (<index>, <num>, ...<br><elems>)** 	| Enables adding and removing values within an Array. The first <br>parameter is the index where elements should be addede/removed. The <br>econd parameter is an integer requesting the number of items <br>to be removed. The rest of the parameters will be values to be added<br>as new entries within the Array at that index. 	|
+| **concat (<array>)**                        	| Appends the passed Array to the current Array, creating a new Array.<br>Unlike many Array functions, the result of this function is a new <br>Array.                                                                                                                                                                              	|

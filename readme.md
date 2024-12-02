@@ -1550,3 +1550,48 @@ scope or in any inner scope) will raise an error (this is regardless of whether 
 ### Declaring with const
 The **const** keyword works with the same scoping and hoisting rules as the **let** keyword. The difference with **const** is that it is assumed the variable will not change throughout 
 its lifetime. Using **const** allows the JavaScript engine to make certain optimizations at compile time since it expects the data to remain constant at runtime.
+
+### Working with Numbers
+All numbers in JavaScript are 64-bit floating-point values. Unlike other languages, there is no internal differentiation between floating-point values and integers. JavaScript 
+provides several objects containing functions that are orientated specifically around floating-point values and integers.
+Numbers are the simplest form of data represented by the JavaScript engine. Number values are immutable, which means their value cannot be modified in memory. If you 
+assign a new number to a variable, you are simply overwriting the old value with the new. The existing value is not modified.
+
+Since numbers are passed to variables by value, it is not possible for two variables to point to the same number address space. Therefore, working with number values is 
+considered pure, providing you do not reassign values to variables.
+
+### Template Literals
+Template literals are a more recent addition to the JavaScript language. Surrounding strings with backtick quotes (`) alter the translation of the literal by the JavaScript 
+engine and afford some additional new features.
+
+### There are many forms of function in JavaScript:
+* Anonymous functions
+* Named functions
+* Arrow functions
+* Generator functions
+
+The differences between them are mostly slight syntactical changes that affect how they are used.
+
+### Activity 5.01: Simple Number Comparison
+In this activity, you have been tasked with writing a function that will receive the grades for a student's coursework 
+for an entire year as percentages. The function must average the result of each grade in order to determine whether the student has passed the course for the entire year. The 
+calculation will assume the following:
+
+* An average below 35% is an F grade.
+* An average of 35 – 44% is a D grade.
+* An average of 45% – 59% is a C grade.
+* An average of 60% – 74% is a B grade.
+* An average of 75% and over is an A grade.
+
+Grades for each coursework assignment may be passed as a Number or a String. No other data type is expected, so error handling is not necessary.
+The high-level steps for the activity are as follows:
+
+1. Create a function. Argument labels aren't necessary as we won't know how many arguments there will be.
+2. Extract the arguments for the function.
+3. Get the number of arguments that were passed and store it as a variable.
+4. Add all the arguments together and calculate the average. Store this in a variable.
+
+> Note:
+> 
+> The final condition will always be true if the others have failed, so the condition itself can be skipped. Each condition will not be evaluated if the previous condition 
+has been returned from the function.

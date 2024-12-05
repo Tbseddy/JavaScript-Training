@@ -1487,134 +1487,53 @@ Our library won't be capable of much at first, but you may want to put some effo
 11. Refresh your HTML page and inside the dev tools console, call the window.headlineCreator.createHeadline function with any parameter you'd like. Then, view the result:
 
 ## Chapter Five: Beyond the Fundamentals
-In JavaScript, all primitive data types are immutable. This means that the value cannot be changed in memory. New values can be assigned to a variable, but the underlying data stored in memory cannot be modified directly.
+All programming languages have a type system. Types literally dictate the type of data stored in a variable 
+or function parameter. Types are typically separated into two categories: **primitive** and **complex** types.
 
-Complex data types work differently. They are also known as reference types. Reference types include the Object type and all of its derivatives, such as Array, Date, and Function. All reference types are passed by reference, hence the name. Therefore, if an object is modified through one reference, all the other references that share the same object will see it as updated too, since all of the references point to the same data in 
-memory.
+In JavaScript, all primitive data types are immutable. This means that the value cannot be changed in memory.
 
-All primitives, and preexisting reference types are known as built-in data types. Each of these types has a corresponding object that provides functions for manipulating that type.
+Complex data types work differently. They are also known as reference types. Reference types include the Object type and all of its derivatives, such as Array, Date, and Function. All reference types are passed by reference, hence the name. Therefore, if an object is modified through one reference, all the other references that share the same object will see it as updated too, since all of the references point to the same data in memory.
 
-### Creating Variables
-Variable creation is the means to assign a value to a symbol. In this circumstance, a symbol is a textual representation of the data, much like a container, which can be 
-used to move data through your program. It also improves the legibility of your code. There are multiple ways to create variables, including assignment to the global scope or 
-through the use of either the **var**, **let**, or **const** keywords.
+A complex type is simply a type that has more functionality than a primitive. For instance, a Date value provides additional means of representation, while objects can contain many nested values, such as primitives and other complex types.
 
-### A Note on Referencing
-Even at this early stage, it must be highlighted that JavaScript's referencing functionality can get rather confusing. The presence of closures, prototypes, global
-and local memory stacks, variable assignment variations, and function invocation options can leave even seasoned programmers scratching their heads.
+There are multiple ways to create variables, including assignment to the global scope or through the use of either the var, let, or const keywords.
 
-Only referencing with regard to data at the global level will be discussed in this chapter.
+Assigning a variable without the use of var, let, or const will place the variable into the global scope. 
 
-### Global Assignment
-Assigning a variable without the use of var, let, or const will place the variable into the global scope. This value will then be accessible anywhere in your application unless a 
-variable of the same name exists within that scope. Redeclaring the same variable name without the use of a preceding keyword will overwrite the global reference, even if it's 
-assigned within a different scope.
+Preceding variable assignment with the **var** keyword places the variable into function scope.
 
-Declaring globally in a browser environment is equivalent to declaring the value on the global window object as a field.
+The let keyword has a narrower scope. While **var** is considered to be functionally 
+scoped, the **let** keyword is block scoped. This means that variables that are created with var exist throughout a function's scope level, while let-declared variables are created and used at the block level, such as in if conditional blocks or for loops.
 
-### Declaring with var
-Preceding variable assignment with the **var** keyword places the variable into function scope. This means the variable only exists at the same function as the assignment, 
-but not outside that function. Declaring with var in the global scope is equivalent to declaring without the var keyword.
+The **const** keyword works with the same scoping and hoisting rules as the **let** keyword. The difference with const is that it is assumed the variable will not change throughout its lifetime. Using const allows the JavaScript engine to make certain optimizations at compile time since it expects the data to remain constant at runtime.
 
-Redeclaring a variable with var, but in a nested scope, will not overwrite the variable of the same name in the outer scope.
+> Note
+>
+> Declaring a variable with var or let, but without assigning a value, will result in the variable containing undefined.
 
-Using the var keyword, variables can be scoped (declared) even after they are used within the same scope. This is due to variable hoisting. Hoisting was explained in 
-Chapter 4, JavaScript Libraries and Frameworks.
+By preceding a variable with the **typeof** keyword, the returned value is the type of the variable represented as a string.
 
-### Declaring with let
-The let keyword has a narrower scope. While var is considered to be functionally scoped, the let keyword is block scoped. This means that variables that are created 
-with var exist throughout a function's scope level, while let-declared variables are created and used at the block level, such as in if conditional blocks or for loops.
+Fixed types are types that have no variation of value. In JavaScript, the available fixed types include **null**, **undefined**, and **Booleans** (**true** and **false**). These values are static and cannot change.
+If a variable contains one of these values, it is then strictly equal to the value itself. Fixed types are more of a representation of a situation than actual data. For instance, **true** is a fixed representation of truthfulness and **false** is a fixed representation of falsehood.
 
-For example, using let, a variable can be temporarily overwritten within a for loopwhile not changing a variable of the same name in the outer function. However, if var is 
-used instead, the outer variable will be changed:
+null, in mathematical terms, denotes a value that is not present. In JavaScript, null is a static value that's used to mean no value.
 
-* var a=0;
-* for(var a in [0, 1]);
-* console.log( a );  // ==> a is now 1 (as modified by the loop)
+**null** is a useful value for dereferencing variables or for returning a value from a function when no value can be returned. For instance, a function may return an object from an array if the item is present but may return **null** if it is not.
 
-In the preceding example, the variable declared in the for loop matches the symbol declared outside of it. As such, the same variable reference is modified. However, in 
-the following example, the result is different, as the let-declared variable only exists within the context of the for loop, meaning the outside variable of the same name is left 
-untouched:
+**undefined** is similar to **null** in many ways and, due to this, the two values are often misused. undefined is the value contained in any variable that is declared first, but not assigned a value. It is also the value that's been returned from a function that does not explicitly return a value using the return keyword and it is the value that's returned from a statement (an action with no resulting value).
 
-* var a=0;
-* for(let a in [0, 1]);
-* console.log( a ); // ==> a is still 0 (not modified by the loop)
+Boolean operators are operators that, when combined into an expression, return a Boolean value. Boolean operators fit into two categories; namely, comparison operators and logical operators.
 
-Contrary to **var**, let-declared variables are not hoisted. If a scope declares a variable with **let**, accessing that variable before that let declaration statement (within the same 
-scope or in any inner scope) will raise an error (this is regardless of whether a variable with the same name has been created in an outer scope):
+Comparison operators are often used as the condition parameters of if conditionals and while loop statements. If or while the condition expression returns true, the body block of the expression will execute.
 
-* glob=1; {glob=2; let glob=3;} // ==> can't access lexical declaration `glob' before 
-* initialization
-* glob=1; {glob=2; var glob=3;} // ==> accepted syntax
+Logical operators are often used to concatenate Boolean expressions together.
 
-### Declaring with const
-The **const** keyword works with the same scoping and hoisting rules as the **let** keyword. The difference with **const** is that it is assumed the variable will not change throughout 
-its lifetime. Using **const** allows the JavaScript engine to make certain optimizations at compile time since it expects the data to remain constant at runtime.
+The following table lists each of the logical operators and what they do:
+| **SYMBOL** 	| **NAME** 	| **DESCRIPTION**                                                            	|
+|------------	|----------	|----------------------------------------------------------------------------	|
+| &&         	| AND      	| Returns **true** if the expression<br>either side of the operator is true. 	|
+| ||           | OR       	| Returns **true** if one or both operators return <br>true.                 	|
+| |            | NOT      	| Negates a Boolean value or expression                                      	|
 
-### Working with Numbers
-All numbers in JavaScript are 64-bit floating-point values. Unlike other languages, there is no internal differentiation between floating-point values and integers. JavaScript 
-provides several objects containing functions that are orientated specifically around floating-point values and integers.
-Numbers are the simplest form of data represented by the JavaScript engine. Number values are immutable, which means their value cannot be modified in memory. If you 
-assign a new number to a variable, you are simply overwriting the old value with the new. The existing value is not modified.
-
-Since numbers are passed to variables by value, it is not possible for two variables to point to the same number address space. Therefore, working with number values is 
-considered pure, providing you do not reassign values to variables.
-
-### Template Literals
-Template literals are a more recent addition to the JavaScript language. Surrounding strings with backtick quotes (`) alter the translation of the literal by the JavaScript 
-engine and afford some additional new features.
-
-### There are many forms of function in JavaScript:
-* Anonymous functions
-* Named functions
-* Arrow functions
-* Generator functions
-
-The differences between them are mostly slight syntactical changes that affect how they are used.
-
-### Activity 5.01: Simple Number Comparison
-In this activity, you have been tasked with writing a function that will receive the grades for a student's coursework 
-for an entire year as percentages. The function must average the result of each grade in order to determine whether the student has passed the course for the entire year. The 
-calculation will assume the following:
-
-* An average below 35% is an F grade.
-* An average of 35 – 44% is a D grade.
-* An average of 45% – 59% is a C grade.
-* An average of 60% – 74% is a B grade.
-* An average of 75% and over is an A grade.
-
-Grades for each coursework assignment may be passed as a Number or a String. No other data type is expected, so error handling is not necessary.
-The high-level steps for the activity are as follows:
-
-1. Create a function. Argument labels aren't necessary as we won't know how many arguments there will be.
-2. Extract the arguments for the function.
-3. Get the number of arguments that were passed and store it as a variable.
-4. Add all the arguments together and calculate the average. Store this in a variable.
-
-> Note:
-> 
-> The final condition will always be true if the others have failed, so the condition itself can be skipped. Each condition will not be evaluated if the previous condition 
-has been returned from the function.
-
-### Working with Objects
-In JavaScript, objects are the primary configurable data structures from which all other complex data types extend, including Array and Date. Objects work like a hash map; they contain key/value properties that can contain any data type, including functions and other objects. An object is defined using curly braces, much like a block:
-
-> var myObject = {};
-
-The values that are added to an object are "members" of that object. Those members are accessible using dot notation:
-* var myObject = {foo: "bar"};
-* console.log(myObject.foo);
-* // => "bar"
-
-### Built-In Array Functions
-The array type provides many more functions that are useful in traversing, copying, concatenating, and presenting array structures. The following table lists some 
-important and useful functions that are available as members of the array type:
-
-| **Method**                                  	| **Description**                                                                                                                                                                                                                                                                                                                   	|
-|---------------------------------------------	|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| **push (<value>)**                          	| Appends a value to the end of the Array                                                                                                                                                                                                                                                                                           	|
-| **pop ()**                                  	| Remove the last value from the end of the Array and returns it.                                                                                                                                                                                                                                                                   	|
-| **unshift (<value>)**                       	| Appends a value to the beginning of the Array                                                                                                                                                                                                                                                                                     	|
-| **shift ()**                                	| Removes the first value from the beginning of the Array and returns it.                                                                                                                                                                                                                                                           	|
-| **splice (<index>, <num>, ...<br><elems>)** 	| Enables adding and removing values within an Array. The first <br>parameter is the index where elements should be addede/removed. The <br>econd parameter is an integer requesting the number of items <br>to be removed. The rest of the parameters will be values to be added<br>as new entries within the Array at that index. 	|
-| **concat (<array>)**                        	| Appends the passed Array to the current Array, creating a new Array.<br>Unlike many Array functions, the result of this function is a new <br>Array.                                                                                                                                                                              	|
+### Exercise 5.03: Odds and Evens
+In this exercise, we will process a series of numbers and output messages describing whether a number is either odd or even.

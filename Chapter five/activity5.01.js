@@ -19,3 +19,8 @@ function average_grade() {
     }
     return "A";
   }
+
+var date1 = new Date("Dec 25 2001").getTime();
+var date2 = new Date("Dec 25 2019").getTime();
+var diff = date2 - date1;
+console.log(diff, "I am here")

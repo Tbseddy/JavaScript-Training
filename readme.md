@@ -1537,3 +1537,58 @@ The following table lists each of the logical operators and what they do:
 
 ### Exercise 5.03: Odds and Evens
 In this exercise, we will process a series of numbers and output messages describing whether a number is either odd or even.
+
+The **!** or **NOT** operator is rather unique. It is considered a "unary" operator because it only accepts one value to the right of it. By using the NOT operator, you essentially 
+negate the value that precedes it.
+
+> var falseValue = !true;
+
+In the preceding example, the falseValue variable will contain a value of false.
+
+A very useful feature of the NOT operator is the "double NOT." This is when two NOT operators are combined to double negate an expression; a true expression is negated to 
+false, then back to true, while a false expression is negated to true, then back to false. When working with truthy or falsey expressions, using the double NOT operator alters 
+the resulting value of these expressions to actual Boolean values. Here's an example:
+* if (!!1 === true) {
+* console.log("this code will execute");
+* }
+
+### Boolean Operator Precedence
+All operators have an order of execution known as "precedence." This precedence is also apparent in mathematics and is a means to ensure that expressions are executed in a 
+predictable manner.
+
+### Excercise 5.04 Free Home Delivery Eligibility Validation
+In this exercise, we will create a function that will determine whether the customers of a grocery store are eligible for free home delivery. The store only delivers to customers 
+who are located within 5 miles of the store. To make this exercise more interesting, the store recently decided to provide free delivery for customers located within 10 miles 
+of the store, but only if those customers have an active membership for their loyalty program. Moreover, if customers are within 1 mile of the store, they aren't eligible for 
+free home delivery, regardless of their membership status. Let's get sta*rted:
+
+1. Define your function signature. The function should accept the distance of the customer's house from the store and their membership status:
+> function isEligible(distance, membershipstatus) {
+
+Based on the store's criteria, the function will return true if the customer is eligible for free delivery and false if they are not. Functions that describe 
+something in a Boolean fashion are often labeled **is**, such as **isValid**, **isEnabled**, or **isGoingToReturnABoolean**.
+
+2. There are two ways to build the body of this function; either break the problem up into small chunks and test the parameters bit by bit or create a single conditional 
+that detects all the appropriate outcomes. We'll work with the latter in order to appropriately demonstrate the content of this chapter thus far. The following if 
+statement is a negative check, it checks whether a customer is not eligible for free home delivery:
+* if (distance < 1 || membershipstatus === "active" && distance > 10 ||
+* membershipstatus === "inactive" && distance > 5 ) {
+
+This is the crux of the exercise. The Boolean operators are executed in the following order, but only those that are necessary to determine the overall result. First and 
+always is the relative check for houses within 1 mile of the store. If the house is within 1 mile of the store, the overall result is true, and the rest of the expression 
+is not evaluated at all. Only if the distance is 1 mile or more is the overall result not determined yet and the following goes ahead. Only if the membership status is 
+active does the check for a distance greater than 10 miles come. Otherwise, if the membership status is inactive, there comes the check for a distance of greater than 
+5 miles. Then, those results are with the less-than-1-mile check. Due to operator precedence, no grouping using parentheses was required.
+
+3. If the conditional evaluates as truthy, then we want to report that the person is not eligible for free delivery:
+> return false;
+
+4. Since the function will simply halt here, if the conditional block is executed, simply return true for anything that slips past:
+* }
+* return true;
+* }
+
+With the function complete, try different parameter variations to test it:
+* console.log( isEligible(.5, "active") );   the result will be **false**.
+* console.log( isEligible(7, "inactive") );   the result will be **false**.
+* console.log( isEligible(7, "active") );     the result will be **true**.

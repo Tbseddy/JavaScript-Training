@@ -1553,24 +1553,17 @@ the resulting value of these expressions to actual Boolean values. Here's an exa
 * }
 
 ### Boolean Operator Precedence
-All operators have an order of execution known as "precedence." This precedence is also apparent in mathematics and is a means to ensure that expressions are executed in a 
-predictable manner.
+All operators have an order of execution known as "precedence." This precedence is also apparent in mathematics and is a means to ensure that expressions are executed in a predictable manner.
 
-### Excercise 5.04 Free Home Delivery Eligibility Validation
-In this exercise, we will create a function that will determine whether the customers of a grocery store are eligible for free home delivery. The store only delivers to customers 
-who are located within 5 miles of the store. To make this exercise more interesting, the store recently decided to provide free delivery for customers located within 10 miles 
-of the store, but only if those customers have an active membership for their loyalty program. Moreover, if customers are within 1 mile of the store, they aren't eligible for 
-free home delivery, regardless of their membership status. Let's get sta*rted:
+### Exercise 5.04 Free Home Delivery Eligibility Validation
+In this exercise, we will create a function that will determine whether the customers of a grocery store are eligible for free home delivery. The store only delivers to customers who are located within 5 miles of the store. To make this exercise more interesting, the store recently decided to provide free delivery for customers located within 10 miles of the store, but only if those customers have an active membership for their loyalty program. Moreover, if customers are within 1 mile of the store, they aren't eligible for free home delivery, regardless of their membership status. Let's get sta*rted:
 
 1. Define your function signature. The function should accept the distance of the customer's house from the store and their membership status:
 > function isEligible(distance, membershipstatus) {
 
-Based on the store's criteria, the function will return true if the customer is eligible for free delivery and false if they are not. Functions that describe 
-something in a Boolean fashion are often labeled **is**, such as **isValid**, **isEnabled**, or **isGoingToReturnABoolean**.
+Based on the store's criteria, the function will return true if the customer is eligible for free delivery and false if they are not. Functions that describe something in a Boolean fashion are often labeled **is**, such as **isValid**, **isEnabled**, or **isGoingToReturnABoolean**.
 
-2. There are two ways to build the body of this function; either break the problem up into small chunks and test the parameters bit by bit or create a single conditional 
-that detects all the appropriate outcomes. We'll work with the latter in order to appropriately demonstrate the content of this chapter thus far. The following if 
-statement is a negative check, it checks whether a customer is not eligible for free home delivery:
+2. There are two ways to build the body of this function; either break the problem up into small chunks and test the parameters bit by bit or create a single conditional that detects all the appropriate outcomes. We'll work with the latter in order to appropriately demonstrate the content of this chapter thus far. The following if statement is a negative check, it checks whether a customer is not eligible for free home delivery:
 * if (distance < 1 || membershipstatus === "active" && distance > 10 ||
 * membershipstatus === "inactive" && distance > 5 ) {
 
@@ -1592,3 +1585,258 @@ With the function complete, try different parameter variations to test it:
 * console.log( isEligible(.5, "active") );   the result will be **false**.
 * console.log( isEligible(7, "inactive") );   the result will be **false**.
 * console.log( isEligible(7, "active") );     the result will be **true**.
+
+
+### The Ternary Operator
+So far, we have looked at unary and binary operators, but another operator is also supported in JavaScript. Known simply as the ternary operator, it performs a similar 
+role to if...else, but in a much more compact fashion. The ternary operator consists of a question mark (?) and a colon (:), which are used to denote a conditional expression 
+?, a true expression with if false expression. For example:
+
+> var action = (score < 40) ? "Fail" : "Pass";
+
+This, of course, is the same as the following:
+* var action;
+* if (score < 40) {
+* action = "Fail";
+* } else {
+* action = "Pass";
+* }
+
+As ternary operators are expressions, they can be nested. Each question mark segment of the operator expects a colon segment to follow, much like nesting groups of brackets. 
+Therefore, it is possible, and acceptable, to do the following:
+
+> var status = (score < 40) ? "Fail" : (score > 90) ? "Outstanding Score" : "Pass";
+
+This is equivalent to the following:
+* var status;
+* if (score < 40) {
+* status = "Fail";
+* } else if (score > 90) {
+* status = "Outstanding Score";
+* } else {
+* status = "Pass";
+* }
+
+**Ternary** operators are very useful for keeping your code succinct. Sometimes, utilizing a complete **if...else** statement detracts from the purpose of the code and makes it 
+harder to understand. Feel free to use the ternary operator where you see fit.
+
+### Working with Numbers
+All numbers in JavaScript are 64-bit floating-point values. Unlike other languages, there is no internal differentiation between floating-point values and integers. 
+Applying integer-specific functions to a number will still result in a floating-point value. 
+
+### Arithmetic Limitations
+Floating-point values can pose something of a problem in JavaScript. Due to their binary encoding, which is how the number is represented in bits within the JavaScript 
+engine, simply adding two floats together may not produce the result you are expecting. Consider the following:
+
+> 0.1 + 0.2;        // outputs 0.30000000000000004
+
+If accuracy is necessary for your application, there are a number of tricks that provide the correct output. With regards to the preceding example, simply converting the 
+values into decimals before the addition will yield better accuracy. You can then convert the resulting value back into a floating-point number afterward, like so:
+
+> ((0.1 * 10) + (0.2 * 10)) / 10;             // outputs 0.3
+
+The same is also true for multiplication and division:
+
+> 0.0032 * 13;     // outputs 0.041600000000000005
+
+However, if you convert into an integer first, then the result is more accurate:
+
+> 0.0032 * 1000 * 13 / 1000;    // outputs 0.0416
+
+This limitation is not restricted to JavaScript. In fact, any language that works with 64-bit IEEE 754 floating-point numbers will have the same limitations. 
+
+### The Number Object
+As we mentioned previously, numbers in JavaScript are primitives. As such, they have no properties or methods. Contrary to this, however, the JavaScript engine maintains 
+an awareness of where numerical literals and variables are used within your application and provides syntactic support for methods via the number object. 
+
+> 5.123.toPrecision(3);  // returns "5.12"
+
+### Number Functions
+Both the Number function and constructor will accept any value type. If the value type cannot be converted into a number, then NaN (not a number) is returned:
+* console.log( Number(true) );     // 1
+* console.log( Number(false) );    // 0
+* console.log( Number("5") );     // 5
+* console.log( Number([]) );      // 0
+* console.log( Number([1, 2, 3]) );   // NaN
+
+When working with JavaScript, it is advised not to use the **Number** constructor at all so that your code is more readable.
+
+Aside from the Number function and constructor, the global Number object also provides a variety of functions to help us identify or parse numeric values:
+
+**Number functions and their descriptions**
+
+| **Function**                  	| **Description**                                                                                                                                                                                                  	|
+|-------------------------------	|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
+| Number.isNAN(<value>)         	| Returns true if the passed value is NAN. Only use this to<br>compare a value with NAN. This is because NAN is special in <br>that it is not equal to any number, not even itself: NAN==NAN<br>evaluate to false. 	|
+| Number.isFinite(<value>)      	| Returns true if the passed value is a representation of a finite<br>value (not finite)                                                                                                                           	|
+| Number.isInteger(<value>)     	| Returns true if the passed value is an Integer. This will also <br>occur if a Float is passed with a Zero mantissa but will return <br>False if the mantissa is greater than Zero.                               	|
+| Number.isSafeInteger(<value>) 	| Returns true is the passed Integer is between <br>9,007,199,254,740,991 and -9,007,199,254,740,991 inclusive.                                                                                                    	|
+| Number.parseFloat(<value>)    	| Convert a passed value into a Float, if possible, or NAN if <br>it is unable to                                                                                                                                  	|
+| Number.parseint(<value>)      	| Convert a passed value into an Integer, if possible, or NAN if<br>it is unable to.                                                                                                                               	|
+
+Each of these functions is static and so must be preceded with the global Number object (which acts as a class in many languages), except when using parseFloat or parseInt. 
+These functions are also global and therefore can be invoked without the preceding Number, like so:
+
+> console.log( Number.parseFloat("1.235e+2") );     // outputs 123.5
+>
+> console.log( parseFloat("1.235e+2") );       // outputs 123.5 again
+
+### Number Methods
+Since the JavaScript parser semantically identifies numeric values, it is possible to invoke instance methods of the Number object against them, just like we can with 
+actual objects. The majority of these methods are used to format numeric values as string representations, which is very useful for presentation in web pages:
+
+**Number methods and their descriptions**
+| **Method**                      	| **Description**                                         	|
+|---------------------------------	|---------------------------------------------------------	|
+| toExponential()                 	| Format the number as a string with exponential notation 	|
+| toFixed(<places>)               	| Format the number as a string with fixed-point notation 	|
+| toLocalString(<fractionDigits>) 	| Format the number as a string with language sensitivity 	|
+| toString0                       	| Returns a direct string representation of the number.   	|
+
+Using a combination of the Number functions and methods, it is possible to convert to and from numeric values as necessary, though some precision may be lost:
+
+* console.log( 123.456.toLocaleString() ); // outputs "123.456" 
+* console.log( 123.456.toFixed(1) ); // outputs "123.5" 
+* console.log( 123.456.toExponential(3) ); // outputs "1.235e+2"
+
+However, calling those functions on integer literals (rather than floats) fails:
+
+> console.log( 123.toString() ); // => Uncaught SyntaxError: Invalid or unexpected token
+
+When JavaScript sees the first dot right after one or more digits, it assumes you want to write a float literal. There are some workarounds to this:
+
+> console.log( 123.0.toString() ); // Append .0. It will still be represented as an integer (as far as it fits in the integer range)
+>
+> console.log( (123).toExponential(2) ); // Wrap within parentheses (..)
+
+**Number properties and their descriptions**
+
+| **Property**      	| **Description**                                                                                       	|
+|-------------------	|-------------------------------------------------------------------------------------------------------	|
+| EPSILON           	| The smallest value possible between two numbers that <br>are representable by JavaScript.             	|
+| MAX SAFE INTEGER  	| This is the largest possible integer that can be used in calculations                                 	|
+| MAX VALUE         	| The largest number possible that can be represented as a double-precision floating-point number.  	|
+| MINI SAFE INTEGER 	| This is the smallest possible integer that can be used in calculations.                               	|
+| MIN_VALUE         	| The smallest number possible that can be represented as a double-precision floating-point number. 	|
+
+Both MAX_SAFE_INTEGER and MIN_SAFE_INTEGER are interesting values. Consider the following code:
+
+> Number.MAX_SAFE_INTEGER + 1 === Number.MAX_SAFE_INTEGER + 2;
+
+Surprisingly, the result of the preceding expression is true. This is simply because the numbers exceed safety boundaries and are therefore no longer accurately represented. 
+The precision that's used in both sides of the preceding expression results in the same value and thus are considered equal.
+
+### Exercise 5.05: Currency Formatter
+In this exercise, we will create a function that can take a numeric value parameter as a number or string and format it into a price value with two-decimal precision. In order to prepend a currency symbol, the function will accept it as a parameter. Let's get started:
+1. Define your function signature. This function will accept two parameters. The first of these will be the decimal value and the second will be the currency symbol:
+* function formatPrice(value, currency) {
+2. When executing, the first task that the function performs should be to validate the quality of the passed parameter values. The value parameter must be able to be converted into a numeric value, while the currency parameter should be a character string. If the currency is falsey, such as when no parameter has been passed, then we can default its value to the dollar symbol:
+* value = Number(value);
+* currency = currency || "$";
+3. When responding to errors, there are many ways we can notify the caller that something went wrong. In this instance, we'll simply return null. This way, the caller will know that anything other than a string response means that something wasn't quite right:
+* if (Number.isNaN(value) || typeof currency != "string") {
+* return null;
+* }
+4. Now that we know the parameters are usable, combine them into the correct format and return the value:
+* return currency + value.toFixed(2);
+* }
+5. If you go ahead and execute this function, you will see the appropriate responses:
+
+* console.log( formatPrice(1.99, 32) );    // => null
+* console.log( formatPrice(5, "£") );     // => £5.00
+* console.log( formatPrice(9.9) );       // => $9.90
+* console.log( formatPrice("Ted") );     // => null
+
+### Working with Strings
+Like **numbers, strings** are simple immutable data types that are managed within the JavaScript runtime as a list of binary values, which are representable as characters. Since they are immutable, they cannot be altered. If you modify a string, using one of the various methods provided, you are actually creating a new string with the changes applied.
+
+The literal representation of strings is a list of characters surrounded by quotes. These quotes can be double quotes, single quotes (apostrophes), or backticks:
+
+* console.log( "I am a string" );
+* console.log( 'I am also a string' );
+* console.log( `I am a special string` );
+
+Strings can be thought of as a long list of single characters, much like arrays, which will be discussed later. As such, it is possible to query individual, or groups of, characters:
+
+> ["H", "e", "l", "l", "o", ",", " ", "W", "o", "r", "l", "d", "!"]
+>
+
+The preceding code is not a literal representation, but simply an analogy of how strings may be perceived. Since strings are lists, it is possible to retrieve characters from them using the character index. This is performed by enclosing the index with square bracket symbols. The index of a character string starts at 0 (zero):
+
+> "Hello, World!"[7];    // => "W"
+>
+
+Since strings are immutable, you cannot assign a replacement character to an index, like so:
+
+* var msg = "Hello, World!";
+* console.log( msg[7] = "Z" ); // => "Z
+* msg; // => "Hello, World!"
+
+It is not possible to modify a string. Instead, you can only create a new one based on the original. You can either reconstruct it using operators or use one of the many string functions provided by the String object, which will be described shortly.
+
+### Special Characters
+Since strings are contained in quotes, placing the same quotes within the string can be problematic. Simply typing the quote in the string is the same as terminating that string. This will then mean that any proceeding characters may be seen as malformed JavaScript code or, possibly worse, executable JavaScript code.
+
+One way to avoid terminating the string is to use a different quote to the type used to contain the string. For instance, if the string is contained in double quotes, then single quotes can be used freely. Likewise, containing the string in single quotes will allow double quotes to be used freely:
+
+* console.log( "I can contain 'single' quotes" );
+* console.log( 'I can contain "double" quotes' );
+
+The JavaScript language provides a means to escape characters included within strings so that they are treated differently. This is performed by preceding the character to escape with a backslash (\) character. In the case of quotes, escaping ensures that the quote character is not seen as the string termination character:
+
+> "It's useful to be able to \"escape\" quotes"
+
+The escape character can be used with several other characters for varying effects. It is even used to escape the escape character, for times when a backslash must exist within a string
+
+**escape characters and description page 268**
+
+### Concatenation
+Concatenating is a means of combining elements, end to end, to form a new element. With regards to strings, this is simply combining strings together to form a larger string. String concatenation is performed using the plus (+) symbol. This is known as method overloading:
+
+* "This string " + "and " + "this string " + "are concatenated";   // => "This string and this string are concatenated"
+
+When concatenating strings, it is important to pay attention to the presence of space characters. No additional characters are added at the point of concatenation. Therefore, if you require spaces between combined strings, you must add these yourself. Since strings are immutable, concatenating strings creates a new string, which you can assign to a variable or pass as a parameter to a function. The original strings remain unaffected.
+
+### Template Literals
+Template literals are a more recent addition to the JavaScript language. Surrounding strings with backtick quotes (`) alter the translation of the literal by the JavaScript engine and afford some additional new features.
+
+The first interesting feature, and the one that's the most commonly used, is the ability to interpolate expressions within a string. This is performed by embedding blocks within the string preceded with the dollar ($) character. Combining strings in this fashion provides the benefit of making string literals easier to read, but can also greatly simplify more complex string concatenation requirements:
+
+* var str = `2 + 2 = ${2 + 2}`;
+* console.log( str ); // => "2 + 2 = 4"
+* var name = "Jonny";
+* welcomeStr = `Hello, ${name}!`;
+* console.log( welcomeStr ); // => "Hello, Jonny!"
+
+Another useful feature of template literals is the ability to use physical line breaks. By applying line breaks to the JavaScript code, those same breaks appear within the resolved string:
+
+* var str = `This is line one
+* and this is line two`;
+* console.log( str );
+* // => "This is line one
+* // => and this is line two"
+
+Finally, a template expression can contain inner template literals within it too, thereby providing a nested template literal implementation. You'll see them in the next example. This caters to more complex expressions within the string itself, such as conditionals or loops.
+
+The result of template literals is a feature within JavaScript that lends itself very nicely to processing pages, and other string data content, in a manner that is more manageable. Where JavaScript developers once looked toward third-party libraries to perform such feats, such libraries are no longer required
+
+### Exercise 5.06: Email Templates
+In this exercise, you will create a function that accepts the components of an email sending service and combines them into an email body template. To make things more interesting, only adults are eligible to post comments on the website. Accordingly, the message text will change. Let's get started:
+
+1. Function declaration
+
+* function sendEmail(name, age, comments) {
+
+This line defines a function named **sendEmail** that takes three parameters: **name, age, and comments.**
+
+2. Conversion and Validation:
+
+>  var age = Number(age);
+> 
+> if (Number.isNaN(age) || typeof name != "string" || typeof comments != "string") {
+> 
+> return null;
+> 
+> }
+
+* The age parameter is converted to a number using Number(age).

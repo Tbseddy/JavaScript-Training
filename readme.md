@@ -1840,3 +1840,172 @@ This line defines a function named **sendEmail** that takes three parameters: **
 > }
 
 * The age parameter is converted to a number using Number(age).
+* The if statement checks three conditions:
+   * Number.isNaN(age) checks if age is NaN (Not a Number). If age cannot be converted to a number, this condition is true.
+   * typeof name != "string" checks if name is not a string.
+   * typeof comments != "string" checks if comments is not a string.
+ * If any of these conditions are true, the function returns null, indicating an invalid input.
+
+3. Constructing the Email Body:
+
+> var body = `A user has posted a comment from the website:
+>
+> name: ${name} 
+>
+> age: ${age}
+>
+> status: ${(age < 18) ? `${name} is not a valid user` : `${name} is a valid user`}
+>
+> comments: ${comments}`;
+
+* A template literal is used to create the **body** of the email. It allows for multi-line strings and embedding expressions with **${}.**
+* The status part uses a ternary operator:
+   * If age < 18, the status is set to **${name} is not a valid user.**
+   * Otherwise, it sets the status to **${name} is a valid user.**
+ * The name, age, and comments variables are interpolated directly into the string.
+
+4. Returning the Constructed Body:
+
+> return body;
+>
+
+* The constructed body string is returned from the function.
+
+***Example Use cases
+1. Valid input:
+
+> console.log(sendEmail("Alice", 25, "This is my comment."));
+>
+Output:
+> A user has posted a comment from the website:
+>
+> name: Alice
+>
+> age: 25
+>
+> status: Alice is a valid user
+>
+> comments: This is my comment.
+>
+
+2. Invalid output (age is NAN):
+
+> console.log(sendEmail("Bob", "not a number", "Hello!"));
+>
+
+Output:
+
+> null
+>
+
+### String Methods
+The String object does not have any static functions, but it does support strings with numerous available methods – far more than those available in the Number object. 
+Working with and manipulating strings is a common requirement in JavaScript; not just for displaying text, but for working with data in general. It is often necessary to 
+clip, sort, modify, add, and remove segments of strings using varying criteria. As such, JavaScript provides just about every method you could think of to make these tasks 
+simple.
+
+The following table lists the most commonly used methods that are provided by the String object:
+
+| **Method**               	| **Description**                                                                                                   	| **Example**                                        	|
+|--------------------------	|-------------------------------------------------------------------------------------------------------------------	|----------------------------------------------------	|
+| charAt(index)            	| Returns the character at the specified index.                                                                     	| 'hello'.charAt(1) returns 'e'                      	|
+| charCodeAt(index)        	| Returns the Unicode of the character at the specified index.                                                      	| 'hello'.charCodeAt(1) returns 101                  	|
+| concat()                 	| Combines two or more strings and returns a new concatenated string.                                               	| 'Hello'.concat(' ', 'World') returns 'Hello World' 	|
+| endsWith(search)         	| Checks if the string ends with the specified substring.                                                           	| 'Hello'.endsWith('o') returns true                 	|
+| indexOf(search)          	| Returns the first index at which a specified substring is found.                                                  	| 'Hello World'.indexOf('o') returns 4               	|
+| lastIndexOf(search)      	| Returns the last index at which a specified substring is found.                                                   	| 'Hello World'.lastIndexOf('o') returns 7           	|
+| split(separator)         	| Splits the string into an array of substrings based on a separator.                                               	| 'a,b,c'.split(',') returns ['a', 'b', 'c']         	|
+| substring(start, end)    	| Similar to slice(), extracts characters between indices.                                                          	| 'Hello World'.substring(0, 5) returns 'Hello'      	|
+| trim()                   	| Removes whitespace from both ends of the string.                                                                  	| ' Hello '.trim() returns 'Hello'                   	|
+| toLocaleLowerCase()      	| Converts the string to lowercase according to locale-specific rules.                                              	| 'Hello'.toLocaleLowerCase() returns 'hello'        	|
+| toLocaleUpperCase()      	| Converts the string to uppercase according to locale-specific rules.                                              	| 'Hello'.toLocaleUpperCase() returns 'HELLO'        	|
+| substr(<start>, <count>) 	| Returns a substring from the string, starting at the index and <br>encompassing the count characters that follow. 	|                                                    	|
+|                          	|                                                                                                                   	|                                                    	|
+
+
+### Exercise 5.07: Sentence Reversal
+In this exercise, you will create a function that accepts a string of any size, trims any whitespace characters, reverses its content, and then capitalizes the first character of 
+the string or of those following a period character. The result should look like a normal sentence from a reversed dimension. The purpose of the exercise is to understand 
+data transformation. Transforming data is ubiquitous in software development. The JavaScript runtime transforms data when it reads your code and converts it into a 
+running application. Being able to transform data in a simple manner will prove to be a valuable skill. Let's get started:
+
+1. Function Definition
+> function reverse(str) {
+>
+
+The function reverse takes a single parameter str.
+
+2. Convert to String and Trim
+
+> str = String(str).trim();
+>
+
+* The input str is converted to a string (if it isn't already) and any leading or trailing whitespace is removed using trim().
+
+3. Initialize Variables
+
+> var result = "", index = str.length - 1, chr, isStart = true;
+>
+
+* result: An empty string to store the final reversed string.
+* index: Initialized to the last index of the string (str.length - 1) to start reversing from the end.
+* chr: A placeholder variable to store each character as it is processed.
+* isStart: A boolean variable to indicate whether the current character is at the start of a sentence or not.
+
+4. While Loop to Traverse the String:
+
+> while (index >= 0) {
+>
+
+* This loop continues as long as index is not less than 0, effectively iterating through the string from the end to the beginning.
+
+5. Capitalize First Character
+
+> if (isStart && chr != " ") {
+> isStart = false;
+> } else {
+> chr = chr.toLowerCase();
+> }
+
+* If isStart is true (indicating the beginning of a new word or sentence) and the character is not a space the character is converted to uppercase, and isStart is set to false to indicate that the next characters will be part of the sentence.
+* If it's not the start of a sentence or chr is a space, the character is converted to lowercase.
+
+6. Handling Periods (.):
+
+> if (chr == ".") {
+> if (index == str.length - 1) {
+> index--;
+> continue;
+> } else {
+> result = result.substr(0, result.length - 1) + ". ";
+> index--;
+> continue;
+> }
+>
+ 
+ * If chr is a period:
+   * isStart is set to true to indicate that the next non-space character should start a new sentence and be uppercase.
+   * If index is at the last character of the original string (str.length - 1), it just decrements index and continues to the next iteration.
+   * If index is not at the last character, the last character added to result (likely the period itself) is replaced with ". " (a period followed by a space), and index is decremented to move to the previous character.
+  
+  7. Appending Characters to the Result:
+
+> result = result + chr;
+> index--;
+>
+
+* The current character chr is added to result.
+* index is decremented to move to the previous character.
+
+8. Returning the Final Result:
+
+> return result + ".";
+>
+
+* The function returns the final reversed string with a period at the end.
+
+Explanation of How It Works:
+  * The function iterates from the end of the input string to the start, reversing the order of characters.
+  * The first non-space character encountered at the start of a new sentence is converted to uppercase, while the rest are converted to lowercase.
+  * If a period is encountered, it signals the end of a sentence. The period is adjusted so that it is correctly placed at the end of the reversed string, followed by a space.
+  

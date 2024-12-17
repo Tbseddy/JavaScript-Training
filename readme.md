@@ -1922,7 +1922,6 @@ The following table lists the most commonly used methods that are provided by th
 | substr(<start>, <count>) 	| Returns a substring from the string, starting at the index and <br>encompassing the count characters that follow. 	|                                                    	|
 |                          	|                                                                                                                   	|                                                    	|
 
-
 ### Exercise 5.07: Sentence Reversal
 In this exercise, you will create a function that accepts a string of any size, trims any whitespace characters, reverses its content, and then capitalizes the first character of 
 the string or of those following a period character. The result should look like a normal sentence from a reversed dimension. The purpose of the exercise is to understand 
@@ -1930,12 +1929,13 @@ data transformation. Transforming data is ubiquitous in software development. Th
 running application. Being able to transform data in a simple manner will prove to be a valuable skill. Let's get started:
 
 1. Function Definition
+
 > function reverse(str) {
 >
 
 The function reverse takes a single parameter str.
 
-2. Convert to String and Trim
+1. Convert to String and Trim
 
 > str = String(str).trim();
 >
@@ -1962,10 +1962,15 @@ The function reverse takes a single parameter str.
 5. Capitalize First Character
 
 > if (isStart && chr != " ") {
+> 
 > isStart = false;
+> 
 > } else {
+> 
 > chr = chr.toLowerCase();
+> 
 > }
+> 
 
 * If isStart is true (indicating the beginning of a new word or sentence) and the character is not a space the character is converted to uppercase, and isStart is set to false to indicate that the next characters will be part of the sentence.
 * If it's not the start of a sentence or chr is a space, the character is converted to lowercase.
@@ -1973,13 +1978,21 @@ The function reverse takes a single parameter str.
 6. Handling Periods (.):
 
 > if (chr == ".") {
+> 
 > if (index == str.length - 1) {
+> 
 > index--;
+> 
 > continue;
+> 
 > } else {
+> 
 > result = result.substr(0, result.length - 1) + ". ";
+> 
 > index--;
+> 
 > continue;
+> 
 > }
 >
  
@@ -1991,6 +2004,7 @@ The function reverse takes a single parameter str.
   7. Appending Characters to the Result:
 
 > result = result + chr;
+> 
 > index--;
 >
 
@@ -2009,3 +2023,603 @@ Explanation of How It Works:
   * The first non-space character encountered at the start of a new sentence is converted to uppercase, while the rest are converted to lowercase.
   * If a period is encountered, it signals the end of a sentence. The period is adjusted so that it is correctly placed at the end of the reversed string, followed by a space.
   
+### The toString Method
+Every primitive type in JavaScript can be converted into a string using the String function. When working with more complex types, however, this is not always the case. For instance, with a typical object, converting it into a string will produce a set result, regardless of the object's content:
+
+> var obj = {name: "Bob"};
+>
+> String(obj);
+>
+> the out is: "[object Object]"
+
+The reason for this is that the JavaScript engine doesn't understand how you wish the data to be parsed. It could simply be that you require the output to form a table of keys and values, or you may simply want a list of the values themselves and to discard the keys. The possibilities are endless.
+
+toString is a method that exists on all data types but is required to be overridden on some of the complex types, providing that you have your own parsing logic. When calling the String function and passing it a value, you are in fact invoking the toString method on that value
+
+> console.log( [1, 2, 3].toString() );
+>
+> // => "[1, 2, 3]"
+
+### Numbers with Strings
+Numbers and strings are both primitive data types and both overload the + (addition) operator. However, there is much more of a relationship between the two that can prove useful or catch you out if you are not careful.
+Interestingly, numbers and strings in JavaScript can often be interchangeable, thanks to an intelligent context-based system. Depending on the circumstances, JavaScript will attempt to deduce the resulting type of an expression based on the available parameters.
+
+You have already seen that strings can be concatenated using the + operator, but 
+numbers can also be concatenated into strings:
+
+> "I am " + 21 + " years old";
+>
+> // => "I am 21 years old"
+
+When the JavaScript parser identifies a numeric value and a string value passed as expressions to the + operator, it will convert the number into a string so that the result is a simple string concatenation. This is otherwise known as context-based casting.
+
+When the string expression is also a representation of a numerical value and is used with other numerical associated operators, such as / or *, the reverse action will occur. At such times, JavaScript's context-based casting will instead convert the string number into an actual number. Here's an example:
+
+> "42.7" * 2;
+> // => 85.4
+>
+
+JavaScript will always convert the non-string value into a string when we use the + operator in order to produce an expected result. It would be too confusing if the + operator worked differently based on the content of the string expression. Numbers can also be mathematically calculated when both expressions are a string, but again, this will only occur if you're not utilizing the + operator:
+
+> console.log( "10" * "10" );
+>
+> // => 100
+>
+> console.log( "10" + "10" );
+>
+> // => "1010"
+
+### Working with Functions
+JavaScript functions are blocks of code with signatures naming the variables that were passed to them when invoked. As with any block, functions have 
+their own stacks that encapsulate and protect data declared within them.
+
+In JavaScript, functions are considered first-class types. This means that, much like any other type, they can be assigned to variables, passed as parameters to other functions, 
+and returned from functions. They are also able to call themselves, which is known as recursive and is the quality that helps make JavaScript a functional language.
+
+**Forms of function in JavaScript:**
+* Anonymous functions
+* Named functions
+* Arrow functions
+* Generator functions
+
+The differences between them are mostly slight syntactical changes that affect how they are used.
+
+### Anonymous Functions
+Since functions in JavaScript are first class, they exist as a transferable resource, much like primitives and objects. Until now, functions have been declared and assigned, which 
+means they have a callable name. However, a function is also an expression with two states: its declared format and its invocation. 
+
+A function can exist without providing a name in the signature, whereby it has the 
+following format:
+
+> function (...parameters) {
+>  ...body
+> }
+
+In JavaScript, it is possible to code a function without providing a name at declaration time. Creating functions in this way allows them to be created in place, such as in a call 
+to another function:
+
+> otherFunction( function(a, b) { /* do something */ } );
+>
+
+In JavaScript, functions are first-class objects, meaning they can be assigned to variables, passed as parameters to other functions, and returned from functions. When an anonymous function (a function without a name) is assigned to a variable, the variable name effectively becomes the function's name.
+
+**Assigning a Function to a Variable:**
+An anonymous function can be assigned to a variable, and the variable can then be used to call the function. This is useful for creating reusable pieces of code that can be passed around and invoked when needed.
+
+**Example**
+Here, we define an anonymous function and assign it to a variable greet:
+
+> const greet = function(name) {
+> 
+>    return `Hello, ${name}!`;
+> 
+> };
+> 
+> // Calling the function using the variable name
+> 
+> console.log(greet("Alice")); // Outputs: Hello, Alice!
+
+In this example, greet acts as the name for the anonymous function, and we can call it using greet.
+
+**Functions as Parameters:**
+Functions can be passed as arguments to other functions, enabling powerful patterns like callbacks and higher-order functions.
+
+**Example**
+We can also pass functions as arguments to other functions. Here’s an example using a higher-order function:
+
+> // Higher-order function that takes a function as a parameter
+> 
+> function processUserInput(callback) {
+> 
+>    const name = "Bob";
+> 
+>    callback(name);
+> 
+> }
+>
+> // Passing the greet function as a callback
+> 
+> processUserInput(greet); // Outputs: Hello, Bob!
+
+In this case, greet is passed as the callback parameter to the processUserInput function, which then calls the greet function with the name parameter.
+
+### callbacks
+A callback in JavaScript is a function that is passed as an argument to another function and is executed after the completion of that function. Callbacks are used to handle asynchronous operations or to customize a function's behavior.
+
+An important use case for anonymous functions has often been asynchronous execution callbacks. When calling code that does not immediately return a value, but 
+also does not stop the execution of code that immediately proceeds it, that code is considered asynchronous
+
+Applications that contain asynchronous code need a means to alert the rest of the application once the asynchronous code has finished running and a value must be 
+returned. In JavaScript, callbacks have long been used for this purpose:
+
+> function doSomethingAsync(data, callback) {
+>
+> async_task(data).then( // do async request
+>
+> function(result) { // then on return
+>
+> callback(result); // execute callback, passing result data!
+>
+> }
+> );
+>
+> //.. continue with other code ..
+>
+> }
+
+The issue with callbacks is that should numerous asynchronous calls need to occur sequentially, the resulting code file has a tendency to indent catastrophically. This issue 
+is sometimes fondly known as the pyramid of doom or callback hell:
+
+> asyncOne(data, function(res1) {
+>
+> asyncTwo(res1, function(res2) {
+>
+> asyncThree(res2, function(res3) {
+>
+> //... ad infinitum ...
+>
+> });
+>
+> });
+>
+> });
+>
+
+As you can see, each new request indents a further two characters. It is not uncommon for an application to possess callback chains of several tens of requests, thereby 
+reaching the far side of the screen while coding. Developers can choose not to indent, as indentation is not a requirement, but not doing so results in harder-to-read code. To 
+resolve this, generator functions were introduced. You will learn more about generator functions later in this chapter
+
+### Exercise 5.08: Functional Parameters
+In this exercise, you will create a function that accepts two parameters: a primitive data type and a function. This function will then combine those parameters and return 
+a function as a result. The returned function will work identically to the function that was passed as a parameter, with the exception that it will always receive the original 
+primitive parameter as its argument. Let's get started:
+
+1. Start off by creating the function signature. You know that it will accept two parameters and, since it will act as a kind of currying process (a term used in 
+functional programming), that's the name that will be used here:
+
+> function curry(prim, fun) {
+>
+
+There is nothing special here. The **curry** function is just like any named function. In this circumstance, it's not important what value the first parameter contains. 
+Even if it contained null, that would still be valid in this instance, so you can accept whatever comes through. 
+
+2. Now, check if the second parameter is a function. Otherwise, when it is invoked, an error may occur if it is some other value type:
+
+> if (typeof fun != "function") return;
+>
+
+3. Now for the fun part. The intention is to always populate the parameter list of the passed-in function with the first parameter of this function, however many times it 
+is called. To do this, use a local function definition:
+
+> var ret = function() {
+>
+> return fun(prim);
+>
+> };
+
+As you can see, the result here is a function that, whenever it is called, will simply call the fun function. The prim parameter will always remain the same here, so the 
+invocation will always produce the same result.
+
+4. Now, return the new function:
+
+> return ret;
+>
+> }
+
+5. Let's give this a spin. Try calling the function while trying different values as parameters:
+
+> var fun = function(val) { return val + 50 };
+>
+> var curry1 = curry(99, fun);
+>
+> console.log( curry1() );        // => 149
+>
+> console.log( curry1() );        // => 149
+>
+> // calling curry1 will produce the same output however many times it is called, because it is a fixed, pure function.
+>
+> var curry2 = curry("Bob", fun);
+>
+> console.log( curry2() );         // => "Bob50"
+
+### Arrow Functions
+Arrow functions, sometimes called **fat arrow** functions, are a simplified syntax for function declaration:
+
+> var myFun = (param) => param + 1;
+
+As shown in the preceding example, arrow functions don't need to provide a block of code and can instead be replaced with an expression. If an expression is used, then no return keyword is required since expressions already return a value. However, the return keyword is required if a block is used, since blocks are not expressions:
+
+> var myFun = (param) => {
+>
+> return param + 1;
+>
+> };
+
+As well as functioning without a block, arrow functions can also be declared without the parentheses surrounding the parameter list:
+
+> var myFun = param => param + 1;
+
+However, the preceding code only works if the parameters are a list of one. This is because a list of two or more parameters forms a rather ambiguous statement. For instance, consider the following:
+
+> var myFun = a, b, c => a + b + c;
+
+When reading the preceding declaration, the compiler will not know which of the following declaration strings you are trying to achieve:
+
+1. var myFun = a, b = undefined, (c) => { return a + b + c };
+2. var myFun = a, (b, c) => { return a + b + c };
+3. var myFun = (a, b, c) => { return a + b + c };
+
+The first two examples will give an error since they attempt to define an arrow function in a var statement, but without being assigned to a variable.
+
+
+### Arrow Function Caveats
+While arrow functions appear much cleaner and more flexible than regular function declarations, there are disadvantages to their use. The first disadvantage is that arrow 
+functions cannot be used as an object constructor and it's ill-advised to use them as object methods.
+
+The purpose of arrow functions is simply to enable a cleaner syntax when working with anonymous functions. Arrow functions were the first syntactical weapon against 
+callback hell, which we described previously. As such, arrow functions should be used wisely.
+
+### Generator Functions
+Generators are a recent and rather complex addition to the JavaScript language. They are incredibly useful functions once you begin to understand them, though that may 
+take some effort. Generators do not facilitate any means that cannot be carried out in some other fashion within the JavaScript language. As such, this section will merely 
+touch upon the subject of generator functions in order to alert you to their usefulness.
+
+Generators provide additional power to sequence iteration. Here's an example:
+
+> for (let i = 0; i < 3; i++) {
+> 
+> callback(i);
+>
+> };
+
+The preceding code is an iterator. The loop iterates three times, from 0 to 2. Each time the iteration occurs, the callback function is called, and the iteration result is passed to 
+it.
+
+Now, the problem with loops is that they are a closed stack. For any custom code to execute within the loop, the loop needs to have knowledge of what to do with the 
+iterated data. This is a restriction that generators aim to overcome.
+
+Generator functions are declared much like named and anonymous functions, but with a slight difference; an asterisk must be placed after the **function** keyword:
+
+> var myFun = function*(params) { /*body*/ };
+>
+
+**The arrow function format cannot be used for generator functions.**
+
+When creating the function body, the same rules for named and anonymous functions apply. However, there are some differences. Take a look at the following example, based 
+on the preceding loop:
+
+> var myFun = function*() {
+> 
+> for (let i = 0; i < 3; i++) {
+>
+> yield i;
+>
+> }
+>
+> };
+
+In particular, note the **yield** keyword. **yield** is a keyword that's been borrowed from multithreaded languages such as C++. Its usage in those languages is similar to its usage 
+here. Essentially, by calling **yield**, you are asking the runtime engine to pass control back to the caller. 
+
+In JavaScript, "passing back of control" includes sending a value to the caller. In the preceding example, a value will be sent each time the function yields, 
+which will be three times in total.
+
+To use the function, you must create an instance of the generator by invoking the function:
+
+> var myGen = myFun();
+
+Once you have a generator instance, you can acquire a value:
+
+> var firstValue = myGen.next().value;
+>
+> console.log( firstValue );  // firstValue will equal 0
+
+You can call the next function many times, until the stream is exhausted. Once exhausted, the returned value will be undefined:
+
+* console.log(myGen.next().value);    // Output is 1
+* console.log(myGen.next().value);    // Output is 2
+* console.log(myGen.next().value);    // Output is undefined
+
+The return value of the next() function is an object with two fields:
+
+> {value: <value>, done: <boolean>}
+
+A generator function in JavaScript is a special type of function that can pause its execution and resume later. It allows you to iterate through values lazily (on demand) using an iterator.
+
+A generator function is defined using the function* syntax, and the yield keyword is used to pause and resume the execution.
+
+### Syntax
+
+> function* generatorFunction() {
+> 
+>    yield 'First';
+> 
+>    yield 'Second';
+> 
+>   yield 'Third';
+> 
+> }
+> 
+> const generator = generatorFunction();
+
+* console.log(generator.next()); // { value: 'First', done: false }
+* console.log(generator.next()); // { value: 'Second', done: false }
+* console.log(generator.next()); // { value: 'Third', done: false }
+* console.log(generator.next()); // { value: undefined, done: true }
+
+### Key Features of Generator Functions
+1. function* Declaration:
+   * Generators are declared with the function* keyword.
+   * Example: function* generatorName() { ... }
+2. yield Keyword:
+   * yield pauses the function's execution and returns a value to the caller.
+   * The function resumes execution when next() is called again.
+3. Iterator Object:
+   * Calling a generator function does not execute its body but instead returns an iterator object.
+   * You can use the .next() method to control its execution.
+4. done and value:
+   * next() returns an object { value, done }.
+   * value: the yielded value.
+   * done: false if the generator can produce more values, true otherwise.
+5. return:
+   * You can use return inside a generator to end the execution and provide a final value.
+
+### Example: Generating Numbers
+
+* function* numberGenerator() {
+*    let num = 0;
+*    while (num < 3) {
+*        yield num++;
+*    }
+* }
+
+* const gen = numberGenerator();
+
+* console.log(gen.next()); // { value: 0, done: false }
+* console.log(gen.next()); // { value: 1, done: false }
+* console.log(gen.next()); // { value: 2, done: false }
+* console.log(gen.next()); // { value: undefined, done: true }
+
+### Example: Infinite Generator
+
+Generators can create infinite sequences, as they pause execution:
+
+* function* infiniteCounter() {
+*    let i = 0;
+*    while (true) {
+*        yield i++;
+*    }
+* }
+
+* const counter = infiniteCounter();
+
+* console.log(counter.next().value); // 0
+* console.log(counter.next().value); // 1
+* console.log(counter.next().value); // 2
+* // Keep calling `next()` for more values
+
+### The this Keyword
+
+The **this** keyword in JavaScript refers to the object it belongs to and its value depends on how a function is called. It gives context to the execution of a function and helps access properties or methods on the current object.
+
+### General Rules for this
+
+The value of this is determined by the execution context in which a function is called. The main contexts are:
+
+1. Global Context (default behavior)
+2. Object Method
+3. Function (Standalone)
+4. Arrow Function
+5. Event Handlers
+6. call, apply, and bind Methods
+7. Constructor Functions and Classes
+
+1. **this** in the Global Context
+In the global scope:
+  * Browser: this refers to the window object.
+  * Node.js: this refers to the global object.
+
+> console.log(this);     // In browser: Window object
+
+2. **this** in Object Methods
+When this is used inside a method, it refers to the object that called the method.
+
+* const user = {
+*    name: "Alice",
+*    greet() {
+*        console.log(`Hello, ${this.name}`);
+*    }
+* };
+
+* user.greet();          // Output: Hello, Alice
+
+Here, **this** refers to the **user** object because it called the **greet** method.
+
+3. **this** in Regular Functions
+
+In a regular function (not part of an object), this depends on how the function is called:
+* If not in strict mode, **this** refers to the global object (window in browsers).
+* If strict mode ('use strict'), this is undefined.
+
+> function showThis() {
+> 
+>    console.log(this);
+> 
+> }
+>
+> showThis(); // In browser: Window object (non-strict mode)
+
+In strict mode:
+
+> "use strict";
+> 
+> function showThis() {
+> 
+>    console.log(this);
+> 
+> }
+>
+> showThis(); // Output: undefined
+
+4. **this** in Arrow Functions
+
+Arrow functions do not bind their own this. Instead, they inherit this from their surrounding (lexical) scope.
+
+* const user = {
+*    name: "Alice",
+*    greet: function() {
+*        const arrowFunc = () => {
+*            console.log(this.name);
+*        };
+*        arrowFunc();
+*    }
+* };
+
+* user.greet();      // Output: Alice
+
+Here, the arrow function inside greet inherits this from the surrounding method, where this refers to the user object.
+
+5. **this** with Event Handlers
+
+In DOM event handlers, **this** refers to the element that triggered the event.
+
+> document.getElementById("myButton").addEventListener("click", function() {
+> 
+>    console.log(this); // Refers to the button element
+> 
+> });
+
+Arrow functions in event listeners do not have their own this. Instead, they inherit it from their surrounding scope.
+
+6. **this** with call, apply, and bind
+
+You can explicitly set the value of **this** using call(), apply(), or bind().
+* call invokes the function immediately, passing this and arguments.
+* apply does the same but takes arguments as an array.
+
+> function greet(age) {
+> 
+>     console.log(`Hello, ${this.name}. You are ${age} years old.`);
+> 
+> }
+> 
+> const person = { name: "Bob" };
+> 
+> greet.call(person, 25);           // Output: Hello, Bob. You are 25 years old.
+> 
+> greet.apply(person, [25]);        // Output: Hello, Bob. You are 25 years old.
+
+* The value of this depends on how a function is called, not where it's defined.
+* Arrow functions do not have their own this; they inherit from the lexical scope.
+* Use call, apply, or bind to explicitly set the value of this.
+* In classes and constructor functions, this refers to the newly created object instance.
+
+Understanding this is crucial for mastering JavaScript, especially when working with objects, events, or functional programming patterns.
+
+### The arguments Keyword 
+
+The arguments keyword in JavaScript is an array-like object that is available inside all regular functions. It provides access to the arguments passed to the function, regardless of the number of parameters defined.
+
+### Key Features of arguments
+1. Available in Regular Functions: The arguments object is only available in non-arrow functions.
+2. Array-like Object:
+  * It has a length property and indexed elements.
+  * However, it does not have array methods like map(), filter(), etc.
+3. Dynamic Access: You can access arguments passed to a function even if they are not explicitly declared as parameters.
+
+**Syntax**
+
+> function example() {
+> 
+>    console.log(arguments);
+> 
+>    console.log(arguments[0]); // First argument
+> 
+>    console.log(arguments.length); // Number of arguments
+> 
+> }
+
+
+> example(1, 2, 3);
+
+// [Arguments] { '0': 1, '1': 2, '2': 3 }
+// 1
+// 3
+
+### Usage Examples
+
+1. Accessing All Arguments
+
+You can access arguments using their index:
+
+* function sum() {
+*   let total = 0;
+*    for (let i = 0; i < arguments.length; i++) {
+*        total += arguments[i];
+*    }
+*    return total;
+* }
+
+* console.log(sum(1, 2, 3, 4)); // Output: 10
+
+2. Using arguments.length
+
+The arguments.length property gives the number of arguments passed to the function.
+
+* function checkArguments() {
+*   console.log(`Number of arguments: ${arguments.length}`);
+* }
+
+* checkArguments(1, 2, 3); // Output: Number of arguments: 3
+* checkArguments(5);       // Output: Number of arguments: 1
+
+3. arguments in Strict Mode
+
+In strict mode ('use strict'), arguments behaves differently:
+
+It does not sync changes between the arguments object and the named parameters.
+
+* "use strict";
+* function test(a, b) {
+*    a = 100;
+*    console.log(arguments[0]); // Still 10, not 100
+* }
+
+* test(10, 20);
+
+4. The Rest Parameter (...)
+
+The rest parameter (...) is the modern alternative to arguments. It provides a clean way to gather all arguments into an array.
+
+* function sum(...nums) {
+*    return nums.reduce((total, num) => total + num, 0);
+* }
+
+* console.log(sum(1, 2, 3, 4)); // Output: 10
+
+### Advantages of the Rest Parameter over arguments:
+1. It provides a true array (with access to array methods).
+2. It works in arrow functions.
+3. It is more readable and modern.
+
+### Call and Apply

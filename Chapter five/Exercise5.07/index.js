@@ -25,3 +25,11 @@ function reverse(str) {
     }
     return result + ".";
   }
+
+  /* 
+  Explanation of How It Works:
+  * The function iterates from the end of the input string to the start, reversing the order of characters.
+  * The first non-space character encountered at the start of a new sentence is converted to uppercase, while the rest are converted to lowercase.
+  * If a period is encountered, it signals the end of a sentence. The period is adjusted so that it is correctly placed at the end of the reversed string, followed by a space.
+  
+  */

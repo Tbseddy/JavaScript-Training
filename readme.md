@@ -2623,3 +2623,399 @@ The rest parameter (...) is the modern alternative to arguments. It provides a c
 3. It is more readable and modern.
 
 ### Call and Apply
+
+As we mentioned previously, JavaScript is an exceptionally flexible language. Since functions are first-class citizens in JavaScript, facilities are provided by the language to 
+manipulate functions.Two of the most commonly used tools for this endeavor are call and apply.
+
+Both call and apply function in very much the same way: by enabling the invocation of functions while changing the function stack's context. 
+The differences between call and apply are simply that call is solely used to manipulate the invoked functions context and apply is used for the same thing and also 
+to supply an arbitrary number of arguments:
+
+> var fun = function () { return arguments.length; };
+>
+> fun.call(this, 1, 2, 3);       // => 3
+>
+> fun.apply(this, [1, 2, 3]);    // => 3
+
+### Exercise 5.09: Dynamic Currying
+
+This exercise will be a continuation of the previous exercise. Since you now know much more about how functions work in JavaScript, we will take the curry concept to a much higher level by supporting arbitrary numbers of arguments. Let's get started:
+
+1. Start off with your function signature. However, since you would like to support an arbitrary number of arguments, the function parameter will need to come first. Also, as the remaining parameters are arbitrary, there is no need to define them:
+
+> var curry = function(fun) { 
+
+Check that the first parameter is a function before continuing with the rest of the logic:
+
+> if (typeof fun != "function") return;
+
+2. As you may have guessed, you will use the arguments object to acquire the parameters. However, you will need to manipulate the arguments list since you will not want to pass the function parameter to itself. As we mentioned previously, the arguments object is not an array, so you'll need to convert it into one first by 
+manipulating it with an array function:
+
+> var args = Array.prototype.slice.call(arguments);
+>
+> args.shift();
+
+In order to convert arguments into an array, you need to call a native function of array instances that copies the array. The slice function creates a shallow copy of an array. In this case, it doesn't know that the arguments object is not an array, but still works fine, which is perfect for this use case. The args.shift() code removes the first item in the array using the newly created array's shift function. Since 
+arrays are mutable, like objects, the args array value is permanently modified.
+
+3. Now that you have your parameters list, create your function wrapper, like you did previously. This time, however, the fun parameter will be invoked using apply:
+
+> var ret = function() {
+>
+> var nested_args = Array.prototype.slice.call(arguments);
+>
+> return fun.apply(this, args.concat(nested_args));
+>
+>  }
+
+Since parameters will be supplied to the curry function and the returned function, the arguments of each must be joined into a single array. This is what concat does. The resulting array is then used as the arguments of the fun function.
+
+4. Finally, return the new function and close the curry function:
+
+> return ret;
+>
+> }
+
+5. Now, let's give this a spin:
+
+> var fun = function() { return arguments.length; };
+>
+> var cur1 = curry(fun, 1, 2, 3);
+>
+> console.log( cur1(4, 5, 6) );    // => 6
+>
+> var cur2 = curry(fun, 1, 2, 3, 4, 5, 6);
+>
+> console.log( cur2(9, 8, 7, 6, 5) );    // => 11
+
+### Working with Objects
+
+In JavaScript, objects are the primary configurable data structures from which all other complex data types extend, including Array and Date. Objects work like a hash map; they contain key/value properties that can contain any data type, including functions and other objects.
+
+An object is defined using curly braces, much like a block:
+
+> var myObject = {};
+
+The values that are added to an object are "members" of that object. Those members are accessible using dot notation:
+
+> var myObject = {foo: "bar"};
+>
+> console.log(myObject.foo);     // => "bar"
+
+The key of a property may be specified with or without quotes. However, the result is exactly the same:
+
+> var myObject = {param1: 1, "param2": 2};
+
+### Objects as Hashtables
+
+Objects are very much like key/value hashtables: you assign a value to an object with a given name or key. These values are arbitrary, and they can be primitives, functions, objects, arrays, and so on. Once an object has been defined, you can further assign properties to them using dot notation:
+
+> var myObject = {};
+>
+> myObject.age = 21;
+>
+> console.log(myObject.age);     // => 21
+
+As well as assigning values via dot notation, they can also be assigned by named index, much like an array:
+
+> myObject["age"] = 32;
+>
+> console.log(myObject.age);     // => 32
+
+When using dot notation, the parameters of an object must use standard variable naming rules. These include the following:
+
+* Only use letters, digits, underscores, and dollar symbols.
+* Must start with a letter, dollar, or underscore symbol.
+* Names are case-sensitive (a and A are different variables).
+* Must not match a reserved word, such as "while" or "if".
+
+Objects keys, however, are not limited by this convention. By using square brackets and passing the name as a string, the scope for naming keys becomes much broader. In fact, you can seemingly use any ASCII character of your choice, including whitespace characters, with up to 227 characters in length. That's 134,217,728 characters!
+
+> var obj = {};
+>
+> obj[" "] = 99;
+>
+> console.log(obj[" "]);       // => 99
+
+Aside from strings, digits may also be used as keys. This results in objects appearing much like arrays. In fact, for the most part, arrays themselves are simply objects, albeit with some superpowers of their own.
+
+### Object Keys and Memory
+
+JavaScript uses a rather intelligent garbage collector; whose job is to clean up discarded data. The issue is, however, that data may not be considered discarded if a reference to it exists in an object. If it isn't handled properly, then memory will continue to be consumed as you add more data, eventually resulting in your browser crashing. This is known as a memory leak!
+
+One way to remove a reference to data from an object is to simply replace it with something else. For instance, it is common in JavaScript applications to see null assigned to object parameters when they are no longer needed. The problem with this approach, though, is that while the original value has been detached from the object, the new null value has now taken its place. null is a value, after all. This may not be 
+overly problematic as all null values point to the same data space, but the contained value is not the only part of the property occupying memory; the key is also an overhead:
+
+> var obj = {key: 99};
+>
+> obj.key = null;
+>
+> console.log(obj);    // => {key: null}
+
+In order to fully delete the reference from the object, which includes **key** and **value**, the **delete** keyword should be utilized:
+
+> var obj = {key: "data"};
+>
+> delete obj.key;
+>
+> console.log(obj);    // => {}
+
+### Object and Pass-By Reference
+
+As we mentioned at the beginning of this chapter, primitive values are immutable and exist by value. When passing them to functions or modifying them, a new copy is made of the data, which occupies a different location in memory. Objects differ from primitive values in this regard.
+
+Objects are mutable data. This means that instead of a copy of the object data being passed to functions or variable assignments within your applications, a reference to the original object data is always passed. When modifying an object, it is the actual original object being altered. No new object is created:
+
+> var myObj = {key: 99};
+>
+> function update(obj) {
+>
+> obj.key = 22;
+>
+> console.log(obj === myObj); // check they are the same object
+>
+> }
+>
+> update(myObj);      // => true
+>
+> console.log(myObj.key);     // => 22
+
+### Object Accessors
+
+As you may have seen, writing to and reading from objects is allowed freely, but it may not be what you want. Let's suggest, for example, that you wish to create a gameState object that will keep track of the player's score and the remaining enemies in play. By allowing data to be read and written randomly, you provide an avenue for bugs to creep into your application.
+
+Let's look at an example:
+
+> var gameState = {
+>
+> score: 0,
+>
+> enemies: 99,
+>
+> lives: 3
+>
+> }
+
+Now, one solution to restricting access to these properties would be to incorporate functions. Here's an example:
+
+* var gameState = {
+* _score: 0,
+* _enemies: 99,
+* _lives: 3,
+* addToScore: function(value) {
+* this._score += value;
+* },
+* killEnemies: function(num) {
+* this._enemies -= num;
+* },
+* killPlayer: function() {
+* this._lives -= 1;
+* }
+* }
+
+Here, the member variables have been renamed to start with an underscore. This is a common practice as it is deemed that any values starting with an underscore are values that should not be accessed directly.
+
+JavaScript provides a solution to this conundrum through the use of accessors, also known as getters and setters. Accessors are a way to add functions that can be used like variables, whereby a getter allows for the retrieval of data and a setter enables the setting of data.
+
+The syntax for accessors is as follows:
+
+> <accessor_type> <accessor_name>() {
+>
+> .. body..
+>
+> }
+
+Let's rework the previous example to utilize getters and setters:
+
+* var gameState = {
+* _score: 0,
+* _enemies: 99,
+* _lives: 3,
+* get score() {
+* return this._score;
+* },
+* set score(value) {
+* this._score += value;
+* },
+
+Here, we can see that the **get.score()** allows getting the score and **set.score(value)*8allows to set a value to the data.
+
+* get enemies() {
+* return this._enemies;
+* },
+* get killEnemies() {
+* this._enemies--;
+* },
+* set killEnemies(num) {
+* this._enemies -= num;
+* },
+* get lives() {
+* return this._lives;
+* },
+* get killPlayer() {
+* if (this.enemies <= 0) {
+* this._lives = 3;
+* } else {
+* this._lives--;
+* }
+* }
+* }
+
+Here, a bit of creative license has been utilized. The score can be read and written to, just like any other value, except when writing, instead of replacing the value, the value is added to the original value, like so:
+
+* console.log(gameState.score);    // => 0
+* gameState.score = 100;
+* gameState.score = 99;
+* console.log(gameState.score);    // => 199
+
+The enemies value can be read as normal, but by calling killEnemies, passing a value will deduct it from the current value, but passing no total will deduct 1 from the value:
+
+* console.log(gameState.enemies);     // => 99
+* gameState.killEnemies = 3;
+* console.log(gameState.enemies);     // => 96
+* gameState.killEnemies;
+* console.log(gameState.enemies);      // => 95
+
+Finally, reading the player's lives property will return the current number of lives, but reading killPlayer will either deduct a life or it will reset it back to 3 lives should there be no enemies left. This may be useful, for instance, if you wanted to reset the player's lives after they've completed the game:
+
+* console.log(gameState.lives);      // => 3
+* gameState.killPlayer;
+* console.log(gameState.lives);     // => 2
+* gameState.killEnemies = 99;
+* gameState.killPlayer;
+* console.log(gameState.lives);     // => 3
+
+Note that if you assign the value of a setter to another variable, that other variable will contain whatever was passed to the setter, not the value that was determined within the setter logic. If no value is passed, then the accessor is not a getter, and so undefined is returned.  
+
+### Exercise 5.10: Converting Objects to toString
+
+In this exercise, you will create a function within an object that provides a "pretty print" facility when using the object in circumstances that require a string value. The function will utilize the toString capability, which we detailed earlier in this chapter:
+
+
+
+### Working with Arrays
+
+Arrays are another complex object type built on top of objects. Unlike objects, arrays are designed to work with lists of data. Arrays may be created in several ways. The first 
+is known as an Array literal and, similarly to object literals, is simply a means of passing a defined Array value to a variable:
+
+> var myArray = [1, 2, 3];
+>
+> var myEmptyArray = [];
+
+The values of an array have no keys, and are instead accessed using integer indexes with the square bracket form:
+
+> myValue = myArray[3];
+>
+
+### Working with Dates
+
+The Date object is an important type in JavaScript but is a complicated type in any language. Like the Array type, the Date type is built on top of a JavaScript object.
+Dates have no literal format. As such, they must be created using the Date constructor.
+
+There are four ways to do this:
+
+* An empty constructor creates a date with the current date and time.
+* The constructor may be passed an integer representing the number of milliseconds to have passed since the beginning of January 1st, 1970.
+* Supplying multiple integer parameters will specify date segments, for example:
+   * (year, month, day, hour, minute, second, millisecond)
+   * (year, month, day, hour, minute, second)
+   * (year, month, day, hour, minute)
+   * (year, month, day, hour)
+   * (year, month, day)
+   * (year, month)
+Be aware that the month is specified by the numbers 0 - 11.
+
+> Note 
+> 
+> You cannot create a Date instance by simply passing the year value as an integer since the JavaScript engine will not know whether you meant year or milliseconds. However, you can create a Date instance from simply passing a year string
+
+The Date object methods and their descriptions
+
+| **Method**                                            	| **Description**                                                        	|
+|-------------------------------------------------------	|------------------------------------------------------------------------	|
+| getDate()                                             	| Returns the day of the month (1–31).                                   	|
+| getDay()                                              	| Returns the day of the week (0–6). Sunday is 0, Saturday is 6.         	|
+| getHours()                                            	| Returns the hour (0–23).                                               	|
+| getMinutes()                                          	| Returns the minutes (0–59).                                            	|
+| getSeconds()                                          	| Returns the seconds (0–59).                                            	|
+| getMilliseconds()                                     	| Returns the milliseconds (0–999).                                      	|
+| getTime()                                             	| Returns the timestamp in milliseconds since January 1, 1970.           	|
+| getTimezoneOffset()                                   	| Returns the time difference between <br>UTC and local time in minutes. 	|
+| getUTCFullYear(),<br> getUTCMonth(),<br> getUTCDate() 	| UTC versions of the above methods.                                     	|
+
+> Note 
+> 
+> Each of the functions provided by Date returns a value starting from 0, with the exception of the getDate method. This often leads to confusion and bugs, so be sure to keep this in mind
+
+Each of the functions detailed in the preceding table also has a set equivalent, with the exception of getDay. Therefore, to update the hour of the Date instance, you simply call 
+setHour and pass it an integer:
+
+* var d = new Date();
+*  d.setHours(12);
+
+### Parsing Date Strings
+
+As we mentioned previously, the Date constructor can accept a date string and convert it into an instance of the Date object. Dates are represented internally within the Date 
+type as integers. Thus, the **getDate** method returns the true interpretation of the date value.
+
+If you have a valid date string, as detailed previously, you can convert it into a date by calling the parse method:
+> var greatDate = Date.parse("November 3, 1976");
+>
+
+However, the return value of the Date.parse method does not return a Date instance. Instead, it returns the number of milliseconds since January 1st, 1970 until that date. 
+In order to create a Date instance, you must, therefore, pass that resulting value to the Date constructor:
+
+* var millis = Date.parse("November 3, 1976");
+* var greatDate = new Date(millis);
+
+### Formatting Dates into Strings
+The Date object provides its own toString function. If you attempt to use a Date instance as a string, you will receive a formatted string instead:
+
+* var d = new Date();
+* console.log(d);
+* the result will be current time in local timezone: Thu Jan 16 2025 05:52:50 GMT+0100 (West Africa Standard Time)
+
+However, this is often not the format you require. If you wish to provide your own date string format, you can override the toString function of the object, much like in the 
+Working with Object section of this chapter. Here's an example:
+
+* var toString = function(date) {
+* date = date || this;
+* var months = [
+* "Jan", "Feb", "Mar",
+* "Apr", "May", "Jun",
+* "Jul", "Aug", "Sep",
+* "Oct", "Nov", "Dec"
+* ];
+* var day = date.getDate();
+* var mnth = date.getMonth();
+* var year = date.getFullYear();
+* return day + ' ' + months[mnth] + ' ' + year;
+* }
+* var d = new Date();
+* d.toString = toString;
+* console.log(d);
+* // The output will be: current date in format 25 Apr 2019
+
+### Date Math
+JavaScript provides no functions for comparing, adding, or subtracting dates. However, working out date differences or combining dates is not hard in JavaScript.
+
+Typically, there are two tasks that need to be considered when comparing dates:
+* What the difference is between two dates.  
+* Adding or subtracting time to/from a date
+
+ Here is an example
+* var date1 = new Date("Dec 25 2001").getTime();
+* var date2 = new Date("Dec 25 2019").getTime();
+* var diff = date2 - date1;
+* console.log(diff);
+* result is: 567993600000
+
+Now, with the number of milliseconds in each, you can convert that into a time unit. For example, if you wanted to find out the number of days that difference represents, you 
+would simply do the following:
+To get the unit, you simply start with milliseconds and work up. Therefore, a day is 1,000 milliseconds * 60 seconds * 60 minutes * 24 hours.
+
+* var day = 1000 * 60 * 60 * 24;
+* var numDays = diff / day;
+* consol.log(numDays);
+* // => 6574

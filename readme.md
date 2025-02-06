@@ -1,6 +1,7 @@
 # JavaScript Jotting
 
 ## Chapter One: 
+JavaSript is a technology that we use to creat websites
 
 JavaScript(JS): This works to enable interactivity in web pages. HTML provides the content and structure, CSS provides the styling and layout, and JavaScript provides the interactivity. 
 
@@ -3019,3 +3020,4 @@ To get the unit, you simply start with milliseconds and work up. Therefore, a da
 * var numDays = diff / day;
 * consol.log(numDays);
 * // => 6574
+

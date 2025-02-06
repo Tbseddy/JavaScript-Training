@@ -1,5 +1,14 @@
 # JavaScript Jotting
 
+1. HTML = creates the content of the website
+2. CSS = changes the appearance of the website
+3. JavaScript = makes the website interactive
+
+<!DOCTYPE html> This tells the browser to use the modern version of html
+
+**Variable** is like a container where we can save a value like number, string and then use it later
+
+
 ## Chapter One: 
 JavaSript is a technology that we use to creat websites
 

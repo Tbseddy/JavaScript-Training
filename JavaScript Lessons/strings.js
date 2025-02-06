@@ -33,6 +33,13 @@ alert('Items (' + (1 + 1) + '): $' + (2095 + 799) / 100);
 alert('some\ntext');
 
 `hello`
-`Items (${1 + 1}): $${(2095 + 799) / 100}`
+`Items (${1 + 1}): $${(2095 + 799) / 100}` // (Template String) Interpolation method using `........`
 `some
 text`
+
+/* 
+What should we use to create a string?
+1. Use '.....' by default
+2. If we need interpolation, multi-line strings
+    use `.....`
+*/

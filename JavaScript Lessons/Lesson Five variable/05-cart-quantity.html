@@ -1,9 +1,32 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Cart Quantity</title>
     </head>
+
     <body>
         
+        <button onclick="console.log(`Cart quantity: ${cartQty}`);">Show Quantity</button>
+
+        <button onclick="cartQty = cartQty + 1; // CartQty++  or CartQty += 1
+        console.log(`Cart quantity: ${cartQty}`);">Add to Cart</button>
+
+        <button onclick="cartQty = cartQty + 2; // CartQty += 2     A short form of re-assigning variable. 
+        console.log(`Cart quantity: ${cartQty}`);">+2</button>
+
+        <button onclick="cartQty = cartQty + 3; 
+        console.log(`Cart quantity: ${cartQty}`);">+3</button>
+
+        <button onclick="cartQty = 0; console.log('Cart was reset.'); 
+        console.log(`Cart quantity: ${cartQty}`);">Reset Cart</button>
+
+
+
+
+        <script>
+            let cartQty = 0;
+        
+        </script>
+
     </body>
 </html>

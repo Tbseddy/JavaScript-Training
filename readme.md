@@ -8,6 +8,114 @@
 
 **Variable** is like a container where we can save a value like number, string and then use it later
 
+### Naming Conventions in Programming
+* camelCase is the standard namming convention for JavaScript. e.g. cartQuantity
+* kebab-case doesn't work in JavaScript, it is used in HTML and CSS
+* snake_case
+* PascalCase
+
+### Variable Name Restrictions
+1. We can't use special words e.g. let
+2. We can't start a variable name with a number
+3. We can't use special characters except $ and _
+
+### 3 Ways to Creat Variables in JavaScript
+1. let (the value can be changed)
+2. const (the value cannot be changed)
+3. var
+
+### What we Learnt in Lesson 5
+* Variables
+* Re-assign a variable
+* Created the cart quantity feature
+* shortcuts for re-assigning a variable
+* Naming conventions and best practices
+* 3 ways to create a variable
+
+### Lesson Six: Rock Paper Scissors Project
+
+Booleans are another type value in JavaScript. There are only 2 booleans: true & false.
+
+A boolean value represents whether something is true or false.
+
+* console.log(5 == '5.00');  // Output = true (the double equals converts both values into the same type; it converts both of these into the number five and then compares them so that's why they are equal)
+
+* console.log(5 === '5.00'); // Output = false  (this because one value is a number and the other valueis a string) Using this is the best approach
+
+* It is better to use (===) instead of (==)
+* It is better to use (!==) instead of (!=)
+
+| **Operator** | **Description**                              | **Examples** | **Results** |
+|--------------|----------------------------------------------|--------------|-------------|
+| ==           | Equality/Equal to                            | 1==1         | true        |
+| ==           | Equality/Equal to                            | 1==2         | false       |
+| ==           | Equality/Equal to                            | 1=='1'       | true        |
+| ===          | Equality before any atomic data conversion   | 1===1        | true        |
+| ===          | Equality before any atomic data conversion   | 1==='1'      | false       |
+| !=           | Inequality                                   | 1!=1         | false       |
+| !=           | Inequality                                   | 1!='2'       | true        |
+| !=           | Inequality                                   | 1!=2         | true        |
+| !==          | Inequality before any atomic data conversion | 1!=='2' or 2 | true        |
+| >            | Greater than                                 | 105>100      | true        |
+| <            | Less than                                    | 50<80        | true        |
+| >=           | Greater than or  equals                      | 100>=90      | true        |
+| <=           | Less than or equals                          | 100<=104     | true        |
+
+
+
+
+* A code to determine if someone is old enough to drive, let's assume the legal age to drive as 18
+
+* Rules of Rock Paper Scissors:
+1. Rock beats scissors
+2. Paper beat rocks
+3. Scissors beat paper
+
+Strategy: 
+1. Think about what steps we need to do and 
+2. Convert those steps into code
+
+Steps (Algorithm): When we click a button (use the onclick attribute) 
+1. Computer randomly select a move
+2. Compare the moves to get the result
+3. Display the result in a popup.
+
+We need a way to convert this random number into a move like rock, paper, scissors, to do this let's imagine the space between 0 and 1 and then divide this space into 3 equal parts (0-1/3-2/3-1). Each part represent a move. 
+
+If we generate a random number and it's between:
+* 0 and 1/3 => rock
+* 1/3 and 2/3 => paper
+* 2/3 and 1 => scissors
+This will give the computer equal chance of picking rock, paper or scissors.
+
+* Logical operators allows us to combine boolean values.
+
+* if-statement have a special feature, they creat something called a **scope**. A **Scope** limits where a variable exists. Basically whenever we have the curly brackets any variable we create inside the curly brackets will only exist inside the curly brackets and we can't use these variables outside the curly brackets; so this called a **scope**
+* Scopes help us to avoid naming conflicts
+* Var doesn't follow the rules of scope.
+
+
+The following table lists each of the logical operators and what they do:
+| **SYMBOL** 	| **NAME** 	| **DESCRIPTION**                                                            	|
+|------------	|----------	|----------------------------------------------------------------------------	|
+| &&         	| AND      	| Returns **true** if the expression either side of the operator is true. 	|
+| ||           | OR       	| Returns **true** if one or both operators return true.                 	|
+| |            | NOT      	| Negates a Boolean value or expression                                      	|
+
+
+* Falsy values: false, 0, '', NaN, undefined and null. Any value that is not this list is a **truthy** value
+  
+  * Shortcuts for If-Statements:
+1. Ternary Operator ?:
+2. Guard Operator &&
+3. Default Operator ||
+
+
+
+
+
+
+
 
 ## Chapter One: 
 JavaSript is a technology that we use to creat websites

@@ -98,7 +98,7 @@ This will give the computer equal chance of picking rock, paper or scissors.
 The following table lists each of the logical operators and what they do:
 | **SYMBOL** 	| **NAME** 	| **DESCRIPTION**                                                            	|
 |------------	|----------	|----------------------------------------------------------------------------	|
-| &&         	| AND      	| Returns **true** if the expression either side of the operator is true. 	|
+| &&         	| AND      	| Returns **true** if the expression on either side of the operator is true. 	|
 | ||           | OR       	| Returns **true** if one or both operators return true.                 	|
 | |            | NOT      	| Negates a Boolean value or expression                                      	|
 
@@ -106,9 +106,29 @@ The following table lists each of the logical operators and what they do:
 * Falsy values: false, 0, '', NaN, undefined and null. Any value that is not this list is a **truthy** value
   
   * Shortcuts for If-Statements:
-1. Ternary Operator ?:
-2. Guard Operator &&
-3. Default Operator ||
+1. Ternary Operator ?: (const result = true ? 'truthy' : 'falsy'  
+        console.log(result);)
+2. Guard Operator &&  (const message = false && 'hello';
+      console.log(message);)
+3. Default Operator ||  
+
+
+### Lesson Seven: Functions
+A function lets us reuse code. Functions creats a scope. Function also makes our code easier to update in the future.
+
+#### Return Statement
+This lets us get a value out of a function. We can return:
+* return 2 + 2;
+* return variable1;
+* return Math.random();
+
+When we use a return statement, it ends the function immediately.
+
+#### Parameters 
+These are the opposite of a return statement. Parameter puts a value into a function.
+
+
+
 
 
 

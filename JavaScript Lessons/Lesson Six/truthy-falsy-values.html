@@ -28,6 +28,69 @@
         // NaN Not a number
 
         console.log('text' / 5); //Output will be NaN
+
+
+        // Ternary Operator ?:
+
+        const result = true ? 'truthy' : 'falsy'  
+        console.log(result);
+        /*
+     This is similar to an if else statement. The question mark as the if branck and the colon as the else branch. An advantage of the ternary operator the if-statement is that we can save ternary operator in a variable. This is a shortcut for the below if statement
+     let result;
+     if (condition) {
+        result = 'truthy';
+     } else {
+        result = 'falsy';
+     }
+        console.log(result);
+*/
+        
+
+
+
+        let cat = 0 ? 'truthy' : 'falsy';
+        console.log(cat);
+
+
+
+      //  Guard Operator &&
+
+      false && console.log('hello');
+
+      /*
+      this is a shortcut for an if statement like this:
+      if (condition) {
+        console.log('hello');
+      }
+      */
+
+      const message = false && 'hello';
+      console.log(message);
+
+
+      const mssg = 5 && 'hello';
+      console.log(mssg);
+
+
+     //  Default Operator ||
+
+     let currency = 'EUR' || 'USD';
+     console.log(currency);
+
+
+     let cur = undefined || 'USD';
+     console.log(cur);
+/*
+The Default operator is a shortcut for an if-statement like this:
+let currency;
+if (condition) {
+        currency = 'USD';
+}
+         
+
+*/
+
+
         </script>
     </body>
 </html>

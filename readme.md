@@ -129,7 +129,10 @@ These are the opposite of a return statement. Parameter puts a value into a func
 
 A parameter works the same way as a variable. Parameter only exist inside a function scope. e.g. function calculateTax(parameter1), alert('hello')
 
-A fuction can actually have more than one parameter
+A fuction can actually have more than one parameter.
+
+### Lesson Eight: Objects
+An object groups multiple values together
 
 
 

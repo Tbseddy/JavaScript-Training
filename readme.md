@@ -125,7 +125,11 @@ This lets us get a value out of a function. We can return:
 When we use a return statement, it ends the function immediately.
 
 #### Parameters 
-These are the opposite of a return statement. Parameter puts a value into a function.
+These are the opposite of a return statement. Parameter puts a value into a function. 
+
+A parameter works the same way as a variable. Parameter only exist inside a function scope. e.g. function calculateTax(parameter1), alert('hello')
+
+A fuction can actually have more than one parameter
 
 
 

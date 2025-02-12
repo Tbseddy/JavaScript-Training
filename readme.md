@@ -132,11 +132,31 @@ A parameter works the same way as a variable. Parameter only exist inside a func
 A fuction can actually have more than one parameter.
 
 ### Lesson Eight: Objects
-An object groups multiple values together
+An object groups multiple values together.We can save an object inside a variable.
 
+#### Reasons why we use objects
+* It makes our code more organized.(just like in our example instead of creating a bunch of variables for the products values like like the name and the price and other details, we can just group all these related values together into one object)
+* Object allows us to group and use multipe values together instead of console.logging each of these values individually. We can just console.log the whole object and display all the values at once.
 
+#### Algorithm (Rock Paper Scissors)
+When we click a button:
+1. Computer randomly selects a move
+2. Compare the moves to get the result
+3. Update a score
+4. Display the result and score in a popup.
 
+Template strings have another special featurecalled **Multi-line Strings**
 
+console.log(product2.name);   this is a dot notation
+
+console.log(product2['name']);   this is a bracket notation
+
+When do we use the bracket notation instead of the dot notation
+
+* Bracket notation lets us use properties that don't work with dot notation e.g. **console.log(product2.delivery-time);** if we run this, it will give us error because JavaScript thinks that this dash is a minus sign. In this case we have to use bracket notation **console.log(product2['delivery-time']);**  
+* We don't just have to use a string between the brackets we can use a variable, a calculation or anything that result in a value.
+
+We can save any type of value inside an Object
 
 
 

@@ -62,22 +62,21 @@
 
 // The reason we created this function in the script element is because the script element runs when the page is loaded
 
-// A function to reuse the computerMove
-             let computerMove = '';      // This is a global variable because it can be accessed anywhere in the code
+                // A function to reuse the computerMove
+                
+                
 
-            function pickComputerMove() {
-                const randomNumber = Math.random();
+                function pickComputerMove() {
+        const randomNumber = Math.random();
 
-            if (randomNumber >= 0 && randomNumber < 1/3){
-                computerMove = 'rock';
-            } else if (randomNumber >= 1/3 && randomNumber < 2/3) {
-                computerMove = 'paper';
-            } else if (randomNumber >= 2/3 && randomNumber < 1) {
-                computerMove = 'scissors';
-            }
-
-            
+        if (randomNumber < 1 / 3) {
+            return 'rock';
+        } else if (randomNumber < 2 / 3) {
+            return 'paper';
+        } else {
+            return 'scissors';
         }
+    }
         </script>
     </body>
 </html>

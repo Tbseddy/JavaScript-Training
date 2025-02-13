@@ -156,7 +156,90 @@ When do we use the bracket notation instead of the dot notation
 * Bracket notation lets us use properties that don't work with dot notation e.g. **console.log(product2.delivery-time);** if we run this, it will give us error because JavaScript thinks that this dash is a minus sign. In this case we have to use bracket notation **console.log(product2['delivery-time']);**  
 * We don't just have to use a string between the brackets we can use a variable, a calculation or anything that result in a value.
 
-We can save any type of value inside an Object
+We can save any type of value inside an Object which includes: numbers, strings, booleans, objects, function e.t.c
+
+We can use nested objects to make our value more organized. An example of a nested Object
+
+rating: {
+   stars: 4.5,
+   count: 87
+}
+
+To access value inside the inner object we'll just use the dot notation or bracket notationmultiple times 
+
+When we save functions inside an object it is called method. console.log is actually a method. Another example of method is: Math.random().
+
+* Math is an object
+* .random() is a function
+* object + function = method
+
+### Built-in Objects
+The **console** and the **math** objects are known as bult-in objects because they are built in the language.
+
+Two more built-in objects: **JSON** and **localStorage** and we will use these objects to improve our rock paper scissors project
+
+#### JSON Built-in Object
+It helps us work with something called JSON. JSON stands for JavaScript Object Notation.
+
+It is basically a syntax, it is similar to JavaScript Object but has less features. The difference is that all properties and strings in JSON must use double quotes. Another difference is that **JSON** does not support functions
+
+Example of JSON
+* {
+* "name": "shirt",
+* "delivery-time": "1 day",
+* "rating": {
+* "stars": 4.5,
+* "count": 87
+* }
+* }
+
+Example of JavaScript Object
+* {
+* name: 'shirt',
+* 'delivery-time;: '1 day',
+* rating: {
+* stars: 4.5,
+* count: 87
+* },
+* fun: function function1(){
+* console.log('function inside object');
+* }
+* }
+
+* Why we use JSON syntax instead of JavaScript object Syntax 
+  1. A JavaScript Object only makes sense in JavaScript on the other hand JSON syntax can be understood by almost every programming language which means JSON syntax is more universal.
+
+  For this reason we use JSON when we send data between computers that might use different programming languages.
+
+  2. We also use JSON when we store data
+
+  JSON object helps us convert a JavaScript to JSON for example let's convert our object product2 to JSON
+  * JSON.stringify() // stringify is a method of the JSON object, so it's a function that is saved inside the JSON object and we can call the function using bracket, between the bracket we can give it JavaScript object we want to convert e.g 
+
+  console.log(JSON.stringify(product2));
+
+* How to convert JSON to JavaScript Object
+   We will use another method in the built-in JSON object cslled **JSON.parse()** 
+
+#### localStorage
+Thsi is used to save values more permanently. So far, we have been saving our values in variables, variables are temporary, they only exist on the current page. If we refresh or close the page all the variables are deleted. To save a value inside **localStorage** it has a method called **.setItem()** localStorage only supports strings
+
+***localStorage.setItem('message', 'hello');*** // we are going to give two stings to this method, the first string is a name. This is how we are going to access the value that we save later. The second is the value that we want to save into local storage.
+
+***console.log(localStorage.getItem('message));*** //this gets a value out of local storage. The output will appear under the console as hello
+
+#### null vs undefined
+* We use **null** when we intentionally want something to be empty
+
+> Auto-Boxing
+>
+
+### Document Object Model (DOM)
+
+
+
+
+
 
 
 

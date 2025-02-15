@@ -235,6 +235,52 @@ Thsi is used to save values more permanently. So far, we have been saving our va
 >
 
 ### Document Object Model (DOM)
+This is another built-in object called the **document object** below is an example of DOM.
+
+**document.body.innerHTML = 'hello';** // this code removes everything on the page and replaces it with a text hello. It also controls all the HTML inside the body. 
+
+**document.body.innerHTML = '<button>Good job!</button>';** // It can also be used to replace the HTML inside the body to whatever we want
+
+document.title = 'Good job!'; // this will change the title
+
+The document object also has methods e.g. **document.querySelector('button');** 
+
+We can have HTML elements inside JavaScript.
+
+The DOM combines JavaScript and HTML together and it gives JavaScript control of the web page.
+
+When an HTML element is inside a JavaScript, the HTML element is converted into a JavaScript object e.g
+
+**console.log(typeof document.body);** // output is object
+
+> Method is a function saved inside an object
+
+**document.querySelector();** // This lets us get any element from the page and put it inside JavaScript
+
+Every HTML element has a property called **.innerHTML** which let us control the HTML inside the element
+
+Objects are values and we can save them inside a variable
+
+#### Subscribed Button Project
+Steps: When we click the button
+1. If the text is "Subscribe" => "Subscribed"
+2. Otherwise, chang it back =>"Subscribe"
+
+
+#### Rock Paper Scissors
+1. We will start by putting the score on the page
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

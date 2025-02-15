@@ -235,7 +235,7 @@ Thsi is used to save values more permanently. So far, we have been saving our va
 >
 
 ### Document Object Model (DOM)
-This is another built-in object called the **document object** below is an example of DOM.
+This is another built-in object called the **document object** It allows JavaScript to fully control the web page. Below is an example of DOM.
 
 **document.body.innerHTML = 'hello';** // this code removes everything on the page and replaces it with a text hello. It also controls all the HTML inside the body. 
 
@@ -267,11 +267,33 @@ Steps: When we click the button
 2. Otherwise, chang it back =>"Subscribe"
 
 
-#### Rock Paper Scissors
-1. We will start by putting the score on the page
+Whenever we get a value from a DOM, the value will be a string. In order to do math we have to manually convert the string into a number. JavaScript has a built-in function **Number()** to do that
 
+**onkeydown** is another HTML attribute which runs JavaScript when we press a key down on our keyboard
 
+**clicks** and **keydowns** are known as **events**
 
+**onclick** and **onkeydown**are known as **event listeners** they chec for events and runs JavaScript when those events happen
+
+Every event listener gets an event object
+
+#### Event Listeners
+onclick = click
+onkeydown = key press
+onscroll = scrolling
+onmouseleave = stop hovering over
+onmouseenter = hovering over
+
+**event.key** will tell us the key we press on the keyboard
+
+Buit-in sting function will convert a value into a string **String()**
+1. String(25)
+2. console.log('25' - 5)  // output will be 20
+
+> Don't do math using string
+>
+
+Window object represents the browser, because of this everything inside the browser is inside the window object
 
 
 

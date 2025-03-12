@@ -295,7 +295,9 @@ Buit-in sting function will convert a value into a string **String()**
 
 Window object represents the browser, because of this everything inside the browser is inside the window object
 
+### Lesson Ten
 
+.classList in JavaScript gives us control of the class attribute **7:33:49**
 
 
 

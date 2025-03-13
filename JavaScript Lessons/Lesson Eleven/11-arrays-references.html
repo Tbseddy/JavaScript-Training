@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Arrays-references</title>
+        
+
+    </head>
+    <body>
+        <script>
+            
+            const array1 = [1, 2, 3];
+            const array2 = array1;
+            array2.push(4);
+            console.log(array1);
+            console.log(array2); 
+            //Both output the same result because arrays are references
+
+
+            //To avoid this behaviour we can create a copy of te values in the array using a method called slice. Check the code below
+
+            const array3 = [1, 2, 3];
+            const array4 = array3.slice();
+            array4.push(4);
+            console.log(array3);
+            console.log(array4);
+
+
+
+            const [firstvalue, secondvalue] = [1, 2, 3]; // to get the first and second value out of the array
+
+// Creating a loop that counts from 1 to 10
+
+            for (let i = 1; i <= 10; i++) {
+                if (i % 3 === 0){
+                    continue;
+                }
+                console.log(i);
+                
+            }
+
+// count fro 1 to 10 using a while loop
+
+            let i = 1;
+
+            while (i <= 10) {
+                if (i % 3 === 0) {
+                    i++;
+                    continue; 
+                }
+                console.log(i);
+                i++;
+            }
+
+
+          
+        </script> 
+    </body>
+</html>

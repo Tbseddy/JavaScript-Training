@@ -297,7 +297,64 @@ Window object represents the browser, because of this everything inside the brow
 
 ### Lesson Ten
 
-.classList in JavaScript gives us control of the class attribute **7:33:49**
+.classList in JavaScript gives us control of the class attribute 
+
+
+### Lesson Eleven (Arrays and Loops)
+
+Arrays is another type of value in JavaScript, it represents a list of values. We can put any type of value inside an array
+
+* .push() - This adds a value to the end of an array
+* .splice() - This removes a value from an Array. It takes two numbers. 
+  * 1. Index we want to remove e.g [0]
+  * 2. Number of values we want to remove
+
+Loops let us run some code over and over.
+
+Two types of loops in JavaScript 
+1. while loop - It is better to use this for a non-standard loop
+2. for loop - It is better to use this for a standard loop
+
+#### Looping through an Array
+This means we will go through each value of an array one by one and do something with each value
+
+#### Accumulator Pattern
+* Problem: We have an array of numbers [1, 1, 3] how do we calculate the total?
+
+> Note: Always put your JavaScript link (<script src="11-todo-list-with-date.js"></script>) in the body of your html before the </body>
+>
+
+Loops have two features:
+1. break:  It's let us exit a loop early
+   * for (let i = 1; i <= 10; i++) {
+   * console.log(i);
+   * if (i === 8) {
+   *  break;
+   *  }
+   *  }
+2. continue: It's let us skip one iteration of the loop. 
+   *  for (let i = 1; i <= 10; i++) {
+     *           if (i === 3){
+       *             continue;
+          *      }
+             *   console.log(i);
+             *   if (i === 8) {
+              *      break;
+            *    }
+        *    } 
+
+To skip a number if it's divisible by 3. Divisible by 3 = can be divided evenly into 3 
+* for (let i = 1; i <= 10; i++) {
+*                if (i % 3 === 0){
+*                    continue;
+*                }
+*                console.log(i);
+*                
+*            }
+
+* 9:28:27
+         
+
 
 
 
